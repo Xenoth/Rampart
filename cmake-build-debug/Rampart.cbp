@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="rampart"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\cmake_modules\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 package"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="package_source">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 package_source"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/local">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install/strip">
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rampart">
+				<Option output="/home/xenoth/ClionProjects/Rampart/cmake-build-debug/rampart" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 rampart"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rampart/fast">
+				<Option output="/home/xenoth/ClionProjects/Rampart/cmake-build-debug/rampart" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/home/xenoth/ClionProjects/Rampart/cmake-build-debug"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/5/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/usr/include/c++/5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/5"/>
+					<Add directory="/usr/include/c++/5/backward"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 rampart/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/xenoth/ClionProjects/Rampart/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/AbstractDynamicEntity.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/AbstractDynamicEntity.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/AbstractEntity.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/AbstractEntity.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/AbstractStaticEntity.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/AbstractStaticEntity.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Audio.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Audio.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Bullet.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Bullet.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/BulletsManager.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/BulletsManager.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Engine.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Engine.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Explosable.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Explosable.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Exploser.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Gun.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Gun.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/GunsManager.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/GunsManager.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/MapManager.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/MapManager.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Ship.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Ship.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/ShipsManager.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/ShipsManager.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Shootable.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Shootable.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Shooter.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/TileMap.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/TileMap.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/main.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/config.h.in">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/cmake_modules/FindSFML.cmake">
+			<Option virtualFolder="CMake Files\cmake_modules\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

@@ -1,0 +1,62 @@
+#ifndef ENGINE_H
+#define ENGINE_H
+
+
+#include <cstdlib>
+#include <iostream>
+
+
+#include <SFML/Graphics/ConvexShape.hpp>
+#include <SFML/Graphics/CircleShape.hpp>
+#include <time.h>
+
+#include "GunsManager.h"
+#include "BulletsManager.h"
+#include "MapManager.h"
+#include "ShipsManager.h"
+#include "Audio.h"
+
+class Engine
+{
+	public:
+			
+		Engine();
+	
+		void resetGame(sf::Vector2u mapSize);		
+		void drawGame(sf::RenderWindow & window);
+
+		bool addGun(sf::Vector2f cursor);
+		void addShip(sf::Vector2f cursor);
+		void addShips();
+
+		inline void pause() { audio.pause(); };
+		inline void resume() { audio.resume(); };
+		void update(sf::Vector2f mouse);
+		
+		bool chooseCastle(sf::Vector2f cursor);
+		
+		bool shootGun(sf::Vector2f target);
+
+		int getSizeGuns();
+		int getSizeShips();
+
+		void moveOrShoot();
+	
+	
+	private:
+
+        sf::Vector2u cursor2Grid(sf::Vector2f cursor);
+
+		std::vector<sf::Vector2<int> > generateCloud(size_t height_range, size_t width_range);
+
+		GunsManager gunsManager;
+		BulletsManager bulletsManager;
+		ShipsManager shipsManager;
+		MapManager mapManager;
+
+		Audio audio;
+
+		size_t frameCount;
+};
+
+#endif
