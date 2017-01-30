@@ -4,10 +4,12 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <sstream>
 
 
 #include <SFML/Graphics/ConvexShape.hpp>
 #include <SFML/Graphics/CircleShape.hpp>
+#include <SFML/Graphics.hpp>
 #include <time.h>
 
 #include "GunsManager.h"
@@ -42,6 +44,23 @@ class Engine
 
 		void moveOrShoot();
 	
+		void switchStepPartie(sf::Event event, sf::RenderWindow &window);
+		void setStepPartie(int i);
+		int getStepPartie();
+		void introPartie(sf::RenderWindow &window, char *texte);
+		void pause_game(sf::RenderWindow &window);
+		void game_intro(sf::RenderWindow &window);
+
+		void move();
+		void printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event event);
+		void newPartieQuestion(sf::RenderWindow &window);
+
+		sf::Clock clock;
+		sf::Time pauseClock;
+		bool pauseGame;
+
+		sf::Font fontAncient;
+		sf::Texture texture;
 	
 	private:
 
@@ -57,6 +76,12 @@ class Engine
 		Audio audio;
 
 		size_t frameCount;
+
+		int stepPartie;
+		bool newStep;
+
+		
+
 };
 
 #endif
