@@ -23,7 +23,7 @@ include_directories("${PROJECT_BINARY_DIR}")
 # Define sources and executable
 set(EXECUTABLE_NAME "rampart")
 file (GLOB_RECURSE sourceFiles src/* Ship.cpp)
-add_executable(${EXECUTABLE_NAME} ${sourceFiles} src/ShipsManager.cpp src/ShipsManager.h src/Audio.cpp src/Audio.h)
+add_executable(${EXECUTABLE_NAME} ${sourceFiles} src/ShipsManager.cpp src/ShipsManager.h src/Audio.cpp src/Audio.h src/Wall.cpp src/Wall.h src/WallManager.cpp src/WallManager.h src/Castle.cpp src/Castle.h src/CastlesManager.cpp src/CastlesManager.h)
 
 
 # Detect and add SFML
@@ -38,7 +38,7 @@ endif()
 
 
 # Install target
-install(TARGETS ${EXECUTABLE_NAME} DESTINATION bin)
+install(TARGETS ${EXECUTABLE_NAME} DESTINATION ${CMAKE_SOURCE_DIR}/bin)
 
 
 # CPack packaging

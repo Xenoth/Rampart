@@ -33,21 +33,29 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
 endif()
 
 if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/rampart" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/rampart")
+  if(EXISTS "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/rampart"
+         FILE "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/bin" TYPE EXECUTABLE FILES "/home/xenoth/ClionProjects/Rampart/rampart")
-  if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/rampart" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/rampart")
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/home/xenoth/ClionProjects/Rampart/bin/rampart")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+file(INSTALL DESTINATION "/home/xenoth/ClionProjects/Rampart/bin" TYPE EXECUTABLE FILES "/home/xenoth/ClionProjects/Rampart/rampart")
+  if(EXISTS "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/rampart"
+         FILE "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart"
          OLD_RPATH "/usr/local/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/bin/rampart")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart")
     endif()
   endif()
 endif()

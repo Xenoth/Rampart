@@ -351,6 +351,60 @@ src/BulletsManager.cpp.s:
 	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/BulletsManager.cpp.s
 .PHONY : src/BulletsManager.cpp.s
 
+src/Castle.o: src/Castle.cpp.o
+
+.PHONY : src/Castle.o
+
+# target to build an object file
+src/Castle.cpp.o:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Castle.cpp.o
+.PHONY : src/Castle.cpp.o
+
+src/Castle.i: src/Castle.cpp.i
+
+.PHONY : src/Castle.i
+
+# target to preprocess a source file
+src/Castle.cpp.i:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Castle.cpp.i
+.PHONY : src/Castle.cpp.i
+
+src/Castle.s: src/Castle.cpp.s
+
+.PHONY : src/Castle.s
+
+# target to generate assembly for a file
+src/Castle.cpp.s:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Castle.cpp.s
+.PHONY : src/Castle.cpp.s
+
+src/CastlesManager.o: src/CastlesManager.cpp.o
+
+.PHONY : src/CastlesManager.o
+
+# target to build an object file
+src/CastlesManager.cpp.o:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/CastlesManager.cpp.o
+.PHONY : src/CastlesManager.cpp.o
+
+src/CastlesManager.i: src/CastlesManager.cpp.i
+
+.PHONY : src/CastlesManager.i
+
+# target to preprocess a source file
+src/CastlesManager.cpp.i:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/CastlesManager.cpp.i
+.PHONY : src/CastlesManager.cpp.i
+
+src/CastlesManager.s: src/CastlesManager.cpp.s
+
+.PHONY : src/CastlesManager.s
+
+# target to generate assembly for a file
+src/CastlesManager.cpp.s:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/CastlesManager.cpp.s
+.PHONY : src/CastlesManager.cpp.s
+
 src/Engine.o: src/Engine.cpp.o
 
 .PHONY : src/Engine.o
@@ -621,6 +675,60 @@ src/TileMap.cpp.s:
 	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/TileMap.cpp.s
 .PHONY : src/TileMap.cpp.s
 
+src/Wall.o: src/Wall.cpp.o
+
+.PHONY : src/Wall.o
+
+# target to build an object file
+src/Wall.cpp.o:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Wall.cpp.o
+.PHONY : src/Wall.cpp.o
+
+src/Wall.i: src/Wall.cpp.i
+
+.PHONY : src/Wall.i
+
+# target to preprocess a source file
+src/Wall.cpp.i:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Wall.cpp.i
+.PHONY : src/Wall.cpp.i
+
+src/Wall.s: src/Wall.cpp.s
+
+.PHONY : src/Wall.s
+
+# target to generate assembly for a file
+src/Wall.cpp.s:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Wall.cpp.s
+.PHONY : src/Wall.cpp.s
+
+src/WallManager.o: src/WallManager.cpp.o
+
+.PHONY : src/WallManager.o
+
+# target to build an object file
+src/WallManager.cpp.o:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/WallManager.cpp.o
+.PHONY : src/WallManager.cpp.o
+
+src/WallManager.i: src/WallManager.cpp.i
+
+.PHONY : src/WallManager.i
+
+# target to preprocess a source file
+src/WallManager.cpp.i:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/WallManager.cpp.i
+.PHONY : src/WallManager.cpp.i
+
+src/WallManager.s: src/WallManager.cpp.s
+
+.PHONY : src/WallManager.s
+
+# target to generate assembly for a file
+src/WallManager.cpp.s:
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/WallManager.cpp.s
+.PHONY : src/WallManager.cpp.s
+
 src/main.o: src/main.cpp.o
 
 .PHONY : src/main.o
@@ -681,6 +789,12 @@ help:
 	@echo "... src/BulletsManager.o"
 	@echo "... src/BulletsManager.i"
 	@echo "... src/BulletsManager.s"
+	@echo "... src/Castle.o"
+	@echo "... src/Castle.i"
+	@echo "... src/Castle.s"
+	@echo "... src/CastlesManager.o"
+	@echo "... src/CastlesManager.i"
+	@echo "... src/CastlesManager.s"
 	@echo "... src/Engine.o"
 	@echo "... src/Engine.i"
 	@echo "... src/Engine.s"
@@ -711,6 +825,12 @@ help:
 	@echo "... src/TileMap.o"
 	@echo "... src/TileMap.i"
 	@echo "... src/TileMap.s"
+	@echo "... src/Wall.o"
+	@echo "... src/Wall.i"
+	@echo "... src/Wall.s"
+	@echo "... src/WallManager.o"
+	@echo "... src/WallManager.i"
+	@echo "... src/WallManager.s"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"

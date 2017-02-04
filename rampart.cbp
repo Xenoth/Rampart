@@ -182,6 +182,18 @@
 		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/BulletsManager.h">
 			<Option target="rampart"/>
 		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Castle.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Castle.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/CastlesManager.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/CastlesManager.h">
+			<Option target="rampart"/>
+		</Unit>
 		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Engine.cpp">
 			<Option target="rampart"/>
 		</Unit>
@@ -246,6 +258,18 @@
 			<Option target="rampart"/>
 		</Unit>
 		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/TileMap.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Wall.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/Wall.h">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/WallManager.cpp">
+			<Option target="rampart"/>
+		</Unit>
+		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/WallManager.h">
 			<Option target="rampart"/>
 		</Unit>
 		<Unit filename="/home/xenoth/ClionProjects/Rampart/src/main.cpp">

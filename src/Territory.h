@@ -6,30 +6,30 @@
 #define RAMPART_TERRITORY_H
 
 
-#include "Exploser.h"
+#include <stdint.h>
+#include <vector>
+#include "Wall.h"
+#include "TileMap.h"
+#include "Castle.h"
 
-class Territory : Exploser {
+class Territory {
 
 public :
     Territory();
 
-    bool addWall(sf::Vector2f pos);
-    bool eraseWall(sf::Vector2f pos);
+    void loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize);
+    void calculateTerritory(std::vector<Wall> walls, std::vector<Castle> castles);
+    inline bool inTerritory(sf::Vector2f pos) { return (territory_map.at(pos.x*sizeMap.y+pos.y) == 2)};
 
-    void initTerritory(sf::Vector2f pos);
-    void calculateTerritory();
-    bool inTerritory(sf::Vector2f pos);
-
-    void clearWalls();
-
-    void notifyExplosion(void *from, sf::Vector2f pos, bool faction);
+    inline void drawTerritory(sf::RenderWindow & window) { window.draw(tileMap); };
 
 private:
 
+    TileMap tileMap;
     sf::Vector2u sizeMap;
 
-    //0 = nothing, 1 = Walls, 2 = Territory
-    std::vector<__uint8_t> territory_map;
+    //0 = water, 1 = empty, 2 = Walls
+    std::vector<uint8_t> territory_map;
 
 };
 

@@ -66,6 +66,7 @@ SET(CPACK_SOURCE_IGNORE_FILES "/CVS/;/\\.svn/;/\\.bzr/;/\\.hg/;/\\.git/;\\.swp\$
 SET(CPACK_SOURCE_INSTALLED_DIRECTORIES "/home/xenoth/ClionProjects/Rampart;/")
 SET(CPACK_SOURCE_OUTPUT_CONFIG_FILE "/home/xenoth/ClionProjects/Rampart/CPackSourceConfig.cmake")
 SET(CPACK_SOURCE_PACKAGE_FILE_NAME "rampart-0.1.1-Source")
+SET(CPACK_SOURCE_RPM "OFF")
 SET(CPACK_SOURCE_TBZ2 "ON")
 SET(CPACK_SOURCE_TGZ "ON")
 SET(CPACK_SOURCE_TOPLEVEL_TAG "Linux-Source")

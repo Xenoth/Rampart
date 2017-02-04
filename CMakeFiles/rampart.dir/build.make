@@ -201,9 +201,57 @@ CMakeFiles/rampart.dir/src/BulletsManager.cpp.o.provides: CMakeFiles/rampart.dir
 CMakeFiles/rampart.dir/src/BulletsManager.cpp.o.provides.build: CMakeFiles/rampart.dir/src/BulletsManager.cpp.o
 
 
+CMakeFiles/rampart.dir/src/Castle.cpp.o: CMakeFiles/rampart.dir/flags.make
+CMakeFiles/rampart.dir/src/Castle.cpp.o: src/Castle.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rampart.dir/src/Castle.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Castle.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Castle.cpp
+
+CMakeFiles/rampart.dir/src/Castle.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rampart.dir/src/Castle.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xenoth/ClionProjects/Rampart/src/Castle.cpp > CMakeFiles/rampart.dir/src/Castle.cpp.i
+
+CMakeFiles/rampart.dir/src/Castle.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rampart.dir/src/Castle.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xenoth/ClionProjects/Rampart/src/Castle.cpp -o CMakeFiles/rampart.dir/src/Castle.cpp.s
+
+CMakeFiles/rampart.dir/src/Castle.cpp.o.requires:
+
+.PHONY : CMakeFiles/rampart.dir/src/Castle.cpp.o.requires
+
+CMakeFiles/rampart.dir/src/Castle.cpp.o.provides: CMakeFiles/rampart.dir/src/Castle.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Castle.cpp.o.provides.build
+.PHONY : CMakeFiles/rampart.dir/src/Castle.cpp.o.provides
+
+CMakeFiles/rampart.dir/src/Castle.cpp.o.provides.build: CMakeFiles/rampart.dir/src/Castle.cpp.o
+
+
+CMakeFiles/rampart.dir/src/CastlesManager.cpp.o: CMakeFiles/rampart.dir/flags.make
+CMakeFiles/rampart.dir/src/CastlesManager.cpp.o: src/CastlesManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rampart.dir/src/CastlesManager.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/CastlesManager.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/CastlesManager.cpp
+
+CMakeFiles/rampart.dir/src/CastlesManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rampart.dir/src/CastlesManager.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xenoth/ClionProjects/Rampart/src/CastlesManager.cpp > CMakeFiles/rampart.dir/src/CastlesManager.cpp.i
+
+CMakeFiles/rampart.dir/src/CastlesManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rampart.dir/src/CastlesManager.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xenoth/ClionProjects/Rampart/src/CastlesManager.cpp -o CMakeFiles/rampart.dir/src/CastlesManager.cpp.s
+
+CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.requires:
+
+.PHONY : CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.requires
+
+CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.provides: CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.provides.build
+.PHONY : CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.provides
+
+CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.provides.build: CMakeFiles/rampart.dir/src/CastlesManager.cpp.o
+
+
 CMakeFiles/rampart.dir/src/Engine.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/Engine.cpp.o: src/Engine.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/rampart.dir/src/Engine.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rampart.dir/src/Engine.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Engine.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Engine.cpp
 
 CMakeFiles/rampart.dir/src/Engine.cpp.i: cmake_force
@@ -227,7 +275,7 @@ CMakeFiles/rampart.dir/src/Engine.cpp.o.provides.build: CMakeFiles/rampart.dir/s
 
 CMakeFiles/rampart.dir/src/Explosable.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/Explosable.cpp.o: src/Explosable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/rampart.dir/src/Explosable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rampart.dir/src/Explosable.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Explosable.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Explosable.cpp
 
 CMakeFiles/rampart.dir/src/Explosable.cpp.i: cmake_force
@@ -251,7 +299,7 @@ CMakeFiles/rampart.dir/src/Explosable.cpp.o.provides.build: CMakeFiles/rampart.d
 
 CMakeFiles/rampart.dir/src/Gun.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/Gun.cpp.o: src/Gun.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/rampart.dir/src/Gun.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rampart.dir/src/Gun.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Gun.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Gun.cpp
 
 CMakeFiles/rampart.dir/src/Gun.cpp.i: cmake_force
@@ -275,7 +323,7 @@ CMakeFiles/rampart.dir/src/Gun.cpp.o.provides.build: CMakeFiles/rampart.dir/src/
 
 CMakeFiles/rampart.dir/src/GunsManager.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/GunsManager.cpp.o: src/GunsManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/rampart.dir/src/GunsManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/rampart.dir/src/GunsManager.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/GunsManager.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/GunsManager.cpp
 
 CMakeFiles/rampart.dir/src/GunsManager.cpp.i: cmake_force
@@ -299,7 +347,7 @@ CMakeFiles/rampart.dir/src/GunsManager.cpp.o.provides.build: CMakeFiles/rampart.
 
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/MapManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/rampart.dir/src/MapManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/rampart.dir/src/MapManager.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/MapManager.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/MapManager.cpp
 
 CMakeFiles/rampart.dir/src/MapManager.cpp.i: cmake_force
@@ -323,7 +371,7 @@ CMakeFiles/rampart.dir/src/MapManager.cpp.o.provides.build: CMakeFiles/rampart.d
 
 CMakeFiles/rampart.dir/src/Ship.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/Ship.cpp.o: src/Ship.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/rampart.dir/src/Ship.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/rampart.dir/src/Ship.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Ship.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Ship.cpp
 
 CMakeFiles/rampart.dir/src/Ship.cpp.i: cmake_force
@@ -347,7 +395,7 @@ CMakeFiles/rampart.dir/src/Ship.cpp.o.provides.build: CMakeFiles/rampart.dir/src
 
 CMakeFiles/rampart.dir/src/ShipsManager.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/ShipsManager.cpp.o: src/ShipsManager.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/rampart.dir/src/ShipsManager.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/rampart.dir/src/ShipsManager.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/ShipsManager.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/ShipsManager.cpp
 
 CMakeFiles/rampart.dir/src/ShipsManager.cpp.i: cmake_force
@@ -371,7 +419,7 @@ CMakeFiles/rampart.dir/src/ShipsManager.cpp.o.provides.build: CMakeFiles/rampart
 
 CMakeFiles/rampart.dir/src/Shootable.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/Shootable.cpp.o: src/Shootable.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/rampart.dir/src/Shootable.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/rampart.dir/src/Shootable.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Shootable.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Shootable.cpp
 
 CMakeFiles/rampart.dir/src/Shootable.cpp.i: cmake_force
@@ -395,7 +443,7 @@ CMakeFiles/rampart.dir/src/Shootable.cpp.o.provides.build: CMakeFiles/rampart.di
 
 CMakeFiles/rampart.dir/src/Territory.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/Territory.cpp.o: src/Territory.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/rampart.dir/src/Territory.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/rampart.dir/src/Territory.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Territory.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Territory.cpp
 
 CMakeFiles/rampart.dir/src/Territory.cpp.i: cmake_force
@@ -419,7 +467,7 @@ CMakeFiles/rampart.dir/src/Territory.cpp.o.provides.build: CMakeFiles/rampart.di
 
 CMakeFiles/rampart.dir/src/TileMap.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/TileMap.cpp.o: src/TileMap.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/rampart.dir/src/TileMap.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/rampart.dir/src/TileMap.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/TileMap.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/TileMap.cpp
 
 CMakeFiles/rampart.dir/src/TileMap.cpp.i: cmake_force
@@ -441,9 +489,57 @@ CMakeFiles/rampart.dir/src/TileMap.cpp.o.provides: CMakeFiles/rampart.dir/src/Ti
 CMakeFiles/rampart.dir/src/TileMap.cpp.o.provides.build: CMakeFiles/rampart.dir/src/TileMap.cpp.o
 
 
+CMakeFiles/rampart.dir/src/Wall.cpp.o: CMakeFiles/rampart.dir/flags.make
+CMakeFiles/rampart.dir/src/Wall.cpp.o: src/Wall.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/rampart.dir/src/Wall.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/Wall.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/Wall.cpp
+
+CMakeFiles/rampart.dir/src/Wall.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rampart.dir/src/Wall.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xenoth/ClionProjects/Rampart/src/Wall.cpp > CMakeFiles/rampart.dir/src/Wall.cpp.i
+
+CMakeFiles/rampart.dir/src/Wall.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rampart.dir/src/Wall.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xenoth/ClionProjects/Rampart/src/Wall.cpp -o CMakeFiles/rampart.dir/src/Wall.cpp.s
+
+CMakeFiles/rampart.dir/src/Wall.cpp.o.requires:
+
+.PHONY : CMakeFiles/rampart.dir/src/Wall.cpp.o.requires
+
+CMakeFiles/rampart.dir/src/Wall.cpp.o.provides: CMakeFiles/rampart.dir/src/Wall.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/Wall.cpp.o.provides.build
+.PHONY : CMakeFiles/rampart.dir/src/Wall.cpp.o.provides
+
+CMakeFiles/rampart.dir/src/Wall.cpp.o.provides.build: CMakeFiles/rampart.dir/src/Wall.cpp.o
+
+
+CMakeFiles/rampart.dir/src/WallManager.cpp.o: CMakeFiles/rampart.dir/flags.make
+CMakeFiles/rampart.dir/src/WallManager.cpp.o: src/WallManager.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/rampart.dir/src/WallManager.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/WallManager.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/WallManager.cpp
+
+CMakeFiles/rampart.dir/src/WallManager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/rampart.dir/src/WallManager.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/xenoth/ClionProjects/Rampart/src/WallManager.cpp > CMakeFiles/rampart.dir/src/WallManager.cpp.i
+
+CMakeFiles/rampart.dir/src/WallManager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/rampart.dir/src/WallManager.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/xenoth/ClionProjects/Rampart/src/WallManager.cpp -o CMakeFiles/rampart.dir/src/WallManager.cpp.s
+
+CMakeFiles/rampart.dir/src/WallManager.cpp.o.requires:
+
+.PHONY : CMakeFiles/rampart.dir/src/WallManager.cpp.o.requires
+
+CMakeFiles/rampart.dir/src/WallManager.cpp.o.provides: CMakeFiles/rampart.dir/src/WallManager.cpp.o.requires
+	$(MAKE) -f CMakeFiles/rampart.dir/build.make CMakeFiles/rampart.dir/src/WallManager.cpp.o.provides.build
+.PHONY : CMakeFiles/rampart.dir/src/WallManager.cpp.o.provides
+
+CMakeFiles/rampart.dir/src/WallManager.cpp.o.provides.build: CMakeFiles/rampart.dir/src/WallManager.cpp.o
+
+
 CMakeFiles/rampart.dir/src/main.cpp.o: CMakeFiles/rampart.dir/flags.make
 CMakeFiles/rampart.dir/src/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/rampart.dir/src/main.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/rampart.dir/src/main.cpp.o"
 	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/rampart.dir/src/main.cpp.o -c /home/xenoth/ClionProjects/Rampart/src/main.cpp
 
 CMakeFiles/rampart.dir/src/main.cpp.i: cmake_force
@@ -473,6 +569,8 @@ rampart_OBJECTS = \
 "CMakeFiles/rampart.dir/src/Audio.cpp.o" \
 "CMakeFiles/rampart.dir/src/Bullet.cpp.o" \
 "CMakeFiles/rampart.dir/src/BulletsManager.cpp.o" \
+"CMakeFiles/rampart.dir/src/Castle.cpp.o" \
+"CMakeFiles/rampart.dir/src/CastlesManager.cpp.o" \
 "CMakeFiles/rampart.dir/src/Engine.cpp.o" \
 "CMakeFiles/rampart.dir/src/Explosable.cpp.o" \
 "CMakeFiles/rampart.dir/src/Gun.cpp.o" \
@@ -483,6 +581,8 @@ rampart_OBJECTS = \
 "CMakeFiles/rampart.dir/src/Shootable.cpp.o" \
 "CMakeFiles/rampart.dir/src/Territory.cpp.o" \
 "CMakeFiles/rampart.dir/src/TileMap.cpp.o" \
+"CMakeFiles/rampart.dir/src/Wall.cpp.o" \
+"CMakeFiles/rampart.dir/src/WallManager.cpp.o" \
 "CMakeFiles/rampart.dir/src/main.cpp.o"
 
 # External object files for target rampart
@@ -494,6 +594,8 @@ rampart: CMakeFiles/rampart.dir/src/AbstractStaticEntity.cpp.o
 rampart: CMakeFiles/rampart.dir/src/Audio.cpp.o
 rampart: CMakeFiles/rampart.dir/src/Bullet.cpp.o
 rampart: CMakeFiles/rampart.dir/src/BulletsManager.cpp.o
+rampart: CMakeFiles/rampart.dir/src/Castle.cpp.o
+rampart: CMakeFiles/rampart.dir/src/CastlesManager.cpp.o
 rampart: CMakeFiles/rampart.dir/src/Engine.cpp.o
 rampart: CMakeFiles/rampart.dir/src/Explosable.cpp.o
 rampart: CMakeFiles/rampart.dir/src/Gun.cpp.o
@@ -504,6 +606,8 @@ rampart: CMakeFiles/rampart.dir/src/ShipsManager.cpp.o
 rampart: CMakeFiles/rampart.dir/src/Shootable.cpp.o
 rampart: CMakeFiles/rampart.dir/src/Territory.cpp.o
 rampart: CMakeFiles/rampart.dir/src/TileMap.cpp.o
+rampart: CMakeFiles/rampart.dir/src/Wall.cpp.o
+rampart: CMakeFiles/rampart.dir/src/WallManager.cpp.o
 rampart: CMakeFiles/rampart.dir/src/main.cpp.o
 rampart: CMakeFiles/rampart.dir/build.make
 rampart: /usr/local/lib/libsfml-system.so
@@ -512,7 +616,7 @@ rampart: /usr/local/lib/libsfml-graphics.so
 rampart: /usr/local/lib/libsfml-network.so
 rampart: /usr/local/lib/libsfml-audio.so
 rampart: CMakeFiles/rampart.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Linking CXX executable rampart"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/xenoth/ClionProjects/Rampart/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Linking CXX executable rampart"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/rampart.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -526,6 +630,8 @@ CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/AbstractStaticEntity
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Audio.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Bullet.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/BulletsManager.cpp.o.requires
+CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Castle.cpp.o.requires
+CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/CastlesManager.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Engine.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Explosable.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Gun.cpp.o.requires
@@ -536,6 +642,8 @@ CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/ShipsManager.cpp.o.r
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Shootable.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Territory.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/TileMap.cpp.o.requires
+CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/Wall.cpp.o.requires
+CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/WallManager.cpp.o.requires
 CMakeFiles/rampart.dir/requires: CMakeFiles/rampart.dir/src/main.cpp.o.requires
 
 .PHONY : CMakeFiles/rampart.dir/requires

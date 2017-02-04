@@ -89,9 +89,13 @@ cstdlib
 -
 iostream
 -
+sstream
+-
 SFML/Graphics/ConvexShape.hpp
 -
 SFML/Graphics/CircleShape.hpp
+-
+SFML/Graphics.hpp
 -
 time.h
 -

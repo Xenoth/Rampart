@@ -10,6 +10,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/xenoth/ClionProjects/Rampart/src/Audio.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Audio.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/Bullet.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Bullet.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/BulletsManager.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/BulletsManager.cpp.o"
+  "/home/xenoth/ClionProjects/Rampart/src/Castle.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Castle.cpp.o"
+  "/home/xenoth/ClionProjects/Rampart/src/CastlesManager.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/CastlesManager.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/Engine.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Engine.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/Explosable.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Explosable.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/Gun.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Gun.cpp.o"
@@ -20,6 +22,8 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/xenoth/ClionProjects/Rampart/src/Shootable.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Shootable.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/Territory.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Territory.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/TileMap.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/TileMap.cpp.o"
+  "/home/xenoth/ClionProjects/Rampart/src/Wall.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/Wall.cpp.o"
+  "/home/xenoth/ClionProjects/Rampart/src/WallManager.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/WallManager.cpp.o"
   "/home/xenoth/ClionProjects/Rampart/src/main.cpp" "/home/xenoth/ClionProjects/Rampart/CMakeFiles/rampart.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
