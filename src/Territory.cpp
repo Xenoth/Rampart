@@ -19,7 +19,7 @@ void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize){
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 
 }
-void Territory::calculateTerritory(std::vector<Wall> walls std::vector<Castle> castles){
+void Territory::calculateTerritory(std::vector<Wall> walls, std::vector<Castle> castles){
     //TODO
-}
 
+}

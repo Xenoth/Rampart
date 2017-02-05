@@ -29,6 +29,7 @@ void Engine::resetGame(sf::Vector2u mapSize)
 	gunsManager.clearGuns();
 	bulletsManager.clearBullets();
 	shipsManager.clearShips();
+    wallManager.clearWalls();
     audio.playMusic();
 	frameCount=0;
 }
@@ -39,14 +40,17 @@ void Engine::drawGame(sf::RenderWindow & window)
 	//castlesManager.drawCastles(window);
 	gunsManager.drawGuns(window);
 	shipsManager.drawShips(window);
+    wallManager.drawWalls(window);
 	bulletsManager.drawBullets(window);
+    //territory.drawTerritory(window);
 }
 
 bool Engine::addGun(sf::Vector2f cursor) {
+    //TO DO
 	sf::Vector2u coord = cursor2Grid(cursor);
 	if(mapManager.isContructible(coord))
 	{
-		if (!gunsManager.gunsHere(cursor))
+		if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor) /*&& territory.inTerritory(cursor)*/)
 		{
 			gunsManager.placeGun(sf::Vector2f(coord.x*32+16, coord.y*32+16));
 		}
@@ -58,6 +62,18 @@ bool Engine::chooseCastle(sf::Vector2f cursor) {
 	return mapManager.isCastle(coord);
 }
 
+void Engine::addWall(sf::Vector2f cursor){
+    cout << "(" << cursor.x << ", " << cursor.y << ")" << endl;
+    sf::Vector2u coord = cursor2Grid(cursor);
+    if(mapManager.isContructible(coord))
+    {
+        if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor))
+        {
+            wallManager.addWall(sf::Vector2f(coord.x*32+16, coord.y*32+16));
+        }
+    }
+}
+
 void Engine::addShip(sf::Vector2f cursor) {
 	sf::Vector2u coord = cursor2Grid(cursor);
 	if(mapManager.isNavigable(coord))
@@ -65,7 +81,8 @@ void Engine::addShip(sf::Vector2f cursor) {
 		if (!shipsManager.shipsHere(cursor))
 		{
 			shipsManager.placeShip(sf::Vector2f(coord.x*32+16, coord.y*32+16));
-		}
+            //territory.calculateTerritory(wallManager.walls, std::vector<Castle> castles);
+        }
 	}
 }
 
@@ -130,6 +147,10 @@ int Engine::getSizeShips(){
 	return shipsManager.getSizeShips();
 }
 
+int Engine::getSizeWalls(){
+    return wallManager.getSizeWalls();
+}
+
 void Engine::moveOrShoot()
 {
 	for (size_t i = 0; i < shipsManager.getSizeShips(); ++i) {
@@ -138,10 +159,21 @@ void Engine::moveOrShoot()
 
         if (shipsManager.AShipCanShoot(i)) {
             cout << "SHOOT" << endl;
-            size_t target = (rand() % gunsManager.getSizeGuns());
-            cout << "Target : " << target << endl;
-            cout << gunsManager.gunPosition(target).x << ", " << gunsManager.gunPosition(target).y << endl;
-            shipsManager.shoot(i, gunsManager.gunPosition(target));
+            //Gun or Wall
+            size_t wallOrGun = rand()%3;
+            if (wallOrGun == 0){
+                //Target = Gun
+                size_t target = (rand() % gunsManager.getSizeGuns());
+                cout << "Target (Gun) : " << target << endl;
+                cout << gunsManager.gunPosition(target).x << ", " << gunsManager.gunPosition(target).y << endl;
+                shipsManager.shoot(i, gunsManager.gunPosition(target));
+            }else{
+                //Target = Wall
+                size_t target = (rand() % wallManager.getSizeWalls());
+                cout << "Target (Wall) : " << target << endl;
+                cout << wallManager.wallPosition(target).x << ", " << wallManager.wallPosition(target).y << endl;
+                shipsManager.shoot(i, wallManager.wallPosition(target));
+            }
         } else {
         	sf::Vector2f shipPos = shipsManager.getPositionShip(i);
 			
@@ -210,6 +242,23 @@ void Engine::moveOrShoot()
     }
 }
 
+void Engine::generateWall(){
+    //TODO By a Castle : 
+    
+    int xmin = 14-2; // 14 = castle.x;
+    int xmax = 14+2;
+    int ymin = 5-2;  // 5 = castle.y;
+    int ymax = 5+2; 
+    
+    for(int x = xmin; x <= xmax; x++){
+        addWall(sf::Vector2f(x*32+16, ymin*32+16));
+        addWall(sf::Vector2f(x*32+16, ymax*32+16));    
+    }
+    for(int y = ymin+1; y <= ymax-1; y++){
+        addWall(sf::Vector2f(xmin*32+16, y*32+16));
+        addWall(sf::Vector2f(xmax*32+16, y*32+16));    
+    }
+}
 
 void Engine::setStepPartie(int i){
 	stepPartie = i;
@@ -301,6 +350,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
             }
+            generateWall();
             stepPartie = 5;
             newStep = true;
 		}
@@ -426,7 +476,8 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                         case sf::Event::MouseButtonPressed:
                         {
                             if (event.mouseButton.button == sf::Mouse::Left) {
-                                //TO DO Add wall
+                                //Test TODO
+                                addWall(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                                 cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
                             }
                         }

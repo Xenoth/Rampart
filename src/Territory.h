@@ -19,7 +19,7 @@ public :
 
     void loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize);
     void calculateTerritory(std::vector<Wall> walls, std::vector<Castle> castles);
-    inline bool inTerritory(sf::Vector2f pos) { return (territory_map.at(pos.x*sizeMap.y+pos.y) == 2)};
+    inline bool inTerritory(sf::Vector2f pos) { return (territory_map.at(pos.x*sizeMap.y+pos.y) == 2);};
 
     inline void drawTerritory(sf::RenderWindow & window) { window.draw(tileMap); };
 

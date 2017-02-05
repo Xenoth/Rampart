@@ -24,7 +24,12 @@ public:
 
     void drawWalls(sf::RenderWindow & window);
 
+    int getSizeWalls();
+
+    bool wallsHere(sf::Vector2f cursor);
+
     std::vector<Wall> walls;
+    sf::Vector2f wallPosition(size_t i);
 
 private:
     sf::Texture texture;

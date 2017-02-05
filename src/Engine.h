@@ -16,6 +16,8 @@
 #include "BulletsManager.h"
 #include "MapManager.h"
 #include "ShipsManager.h"
+#include "WallManager.h"
+#include "Territory.h"
 #include "Audio.h"
 
 class Engine
@@ -31,6 +33,8 @@ class Engine
 		void addShip(sf::Vector2f cursor);
 		void addShips();
 
+		void addWall(sf::Vector2f cursor);
+
 		inline void pause() { audio.pause(); };
 		inline void resume() { audio.resume(); };
 		void update(sf::Vector2f mouse);
@@ -41,9 +45,12 @@ class Engine
 
 		int getSizeGuns();
 		int getSizeShips();
+		int getSizeWalls();
 
 		void moveOrShoot();
 	
+		void generateWall();
+
 		void switchStepPartie(sf::Event event, sf::RenderWindow &window);
 		void setStepPartie(int i);
 		int getStepPartie();
@@ -72,6 +79,8 @@ class Engine
 		BulletsManager bulletsManager;
 		ShipsManager shipsManager;
 		MapManager mapManager;
+		WallManager wallManager;
+		Territory territory;
 
 		Audio audio;
 
@@ -79,9 +88,6 @@ class Engine
 
 		int stepPartie;
 		bool newStep;
-
-		
-
 };
 
 #endif

@@ -1,4 +1,4 @@
-# Install script for directory: /home/xenoth/ClionProjects/Rampart
+# Install script for directory: /home/gcretin/Bureau/Rampart
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -32,30 +32,30 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-if("${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
-  if(EXISTS "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  if(EXISTS "$ENV{DESTDIR}/home/gcretin/Bureau/Rampart/bin/rampart" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/gcretin/Bureau/Rampart/bin/rampart")
     file(RPATH_CHECK
-         FILE "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart"
+         FILE "$ENV{DESTDIR}/home/gcretin/Bureau/Rampart/bin/rampart"
          RPATH "")
   endif()
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/home/xenoth/ClionProjects/Rampart/bin/rampart")
+   "/home/gcretin/Bureau/Rampart/bin/rampart")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-file(INSTALL DESTINATION "/home/xenoth/ClionProjects/Rampart/bin" TYPE EXECUTABLE FILES "/home/xenoth/ClionProjects/Rampart/rampart")
-  if(EXISTS "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart")
+file(INSTALL DESTINATION "/home/gcretin/Bureau/Rampart/bin" TYPE EXECUTABLE FILES "/home/gcretin/Bureau/Rampart/rampart")
+  if(EXISTS "$ENV{DESTDIR}/home/gcretin/Bureau/Rampart/bin/rampart" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/home/gcretin/Bureau/Rampart/bin/rampart")
     file(RPATH_CHANGE
-         FILE "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart"
+         FILE "$ENV{DESTDIR}/home/gcretin/Bureau/Rampart/bin/rampart"
          OLD_RPATH "/usr/local/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/home/xenoth/ClionProjects/Rampart/bin/rampart")
+      execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}/home/gcretin/Bureau/Rampart/bin/rampart")
     endif()
   endif()
 endif()
@@ -68,5 +68,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/xenoth/ClionProjects/Rampart/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/gcretin/Bureau/Rampart/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
