@@ -5,6 +5,9 @@
 #ifndef RAMPART_TERRITORY_H
 #define RAMPART_TERRITORY_H
 
+#include <cstdlib>
+#include <iostream>
+#include <sstream>
 
 #include <stdint.h>
 #include <vector>
@@ -18,12 +21,14 @@ public :
     Territory();
 
     void loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize);
-    void calculateTerritory(std::vector<Wall> walls, std::vector<Castle> castles);
-    void calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition);
-    inline bool inTerritory(sf::Vector2f pos) { return (territory_map.at(pos.x*sizeMap.y+pos.y) == 2);};
+    //void calculateTerritory(std::vector<Wall> walls, std::vector<Castle> castles);
+    void calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle);
+    inline bool inTerritory(sf::Vector2u pos) { return (territory_map.at(pos.y*sizeMap.x+pos.x) == 2);};
 
     inline void drawTerritory(sf::RenderWindow & window) { window.draw(tileMap); };
+    bool wallsHere(std::vector<Wall> walls, sf::Vector2f cursor);
 
+    void whereIsTerritory();
 private:
 
     TileMap tileMap;

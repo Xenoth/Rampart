@@ -28,3 +28,14 @@ sf::Vector2f CastlesManager::getPositionCastle(size_t i)
 {
     return castles.at(i).getPos();
 }
+
+bool CastlesManager::castlesHere(sf::Vector2f cursor){
+	for (int i = 0; i < castles.size(); ++i)
+    {
+        if ( (int)(castles.at(i).getPos().x/32) == (int)(cursor.x/32) && (int)(castles.at(i).getPos().y/32) == (int)(cursor.y/32))
+        {
+            return true;
+        }
+    }
+    return false;
+}

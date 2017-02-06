@@ -74,25 +74,9 @@ void MapManager::drawMap(sf::RenderWindow & window, size_t frameCount)
 		window.draw(map3);
 }
 
-/*
-sf::Vector2u MapManager::getCastlePosition(){
-	for (size_t i = 0; i < mapSize.x; ++i)
-	{
-		for (int j = 0; j < mapSize.y; ++j)
-		{
-			if (tiles.at(j*mapSize.x+i)==2)
-			{
-				return sf::Vector2u((uint)i, (uint)j);
-			}
-		}
-	}
-	return sf::Vector2u((uint)0, (uint)0);
-}
-*/
-
-
-void MapManager::remplissage(std::vector<Wall> walls, sf::Vector2u position){
+/*void MapManager::remplissage(std::vector<Wall> walls, sf::Vector2u position){
 	std::cout << "REMPLISSAGE"  << std::endl;
+
 	if (isConstructibleCastle(position))
 	{
 		std::cout << "\tCastle"  << std::endl;
@@ -127,4 +111,4 @@ bool MapManager::wallsHere(std::vector<Wall> walls, sf::Vector2f cursor){
         }
     }
     return false;
-}
+}*/

@@ -38,19 +38,21 @@ void Engine::resetGame(sf::Vector2u mapSize)
 void Engine::drawGame(sf::RenderWindow & window)
 {
     mapManager.drawMap(window, frameCount);
+    
     castlesManager.drawCastles(window);
     gunsManager.drawGuns(window);
     shipsManager.drawShips(window);
     wallManager.drawWalls(window);
     bulletsManager.drawBullets(window);
-    //territory.drawTerritory(window);
+    territory.drawTerritory(window);
+    
 }
 
 bool Engine::addGun(sf::Vector2f cursor) {
     sf::Vector2u coord = cursor2Grid(cursor);
-    if(mapManager.inTerritory(coord))
+    if(territory.inTerritory(coord))
     {
-        if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor))
+        if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor) && !castlesManager.castlesHere(cursor))
         {
             gunsManager.placeGun(sf::Vector2f(coord.x*32+16, coord.y*32+16));
         }
@@ -72,7 +74,7 @@ void Engine::addWall(sf::Vector2f cursor){
     sf::Vector2u coord = cursor2Grid(cursor);
     if(mapManager.isContructible(coord))
     {
-        if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor))
+        if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor) && !castlesManager.castlesHere(cursor))
         {
             wallManager.addWall(sf::Vector2f(coord.x*32+16, coord.y*32+16));
         }
@@ -275,7 +277,17 @@ void Engine::testTerritory(){
     {
         sf::Vector2u castlePosition = cursor2Grid(castlesManager.getPositionCastle(i));
         cout << "CASTLEPOSITION : (" << castlePosition.x << ", " << castlePosition.y << ")" << endl;
-        mapManager.remplissage(wallManager.walls, castlePosition);
+        //mapManager.remplissage(wallManager.walls, castlePosition);
+        //TODO
+        territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+        cout << "whereIsTerritory 1" << endl;
+        territory.whereIsTerritory();
+        cout << "Fin whereIsTerritory 1" << endl;
+        territory.calculateTerritory(wallManager.walls, castlePosition, true);
+        cout << "whereIsTerritory 2" << endl;
+        territory.whereIsTerritory();
+        cout << "Fin whereIsTerritory 2" << endl;
+
     }
 }
 

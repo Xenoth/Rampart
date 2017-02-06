@@ -263,6 +263,12 @@ Territory.h
 /home/gcretin/Bureau/Rampart/src/Territory.h
 
 /home/gcretin/Bureau/Rampart/src/Territory.h
+cstdlib
+-
+iostream
+-
+sstream
+-
 stdint.h
 -
 vector

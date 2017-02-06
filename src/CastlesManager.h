@@ -21,6 +21,7 @@ public:
     void placeCastle(sf::Vector2f pos);
     size_t getSizeCastles();
     sf::Vector2f getPositionCastle(size_t i);
+    bool castlesHere(sf::Vector2f cursor);
 
     std::vector<Castle> castles;
 

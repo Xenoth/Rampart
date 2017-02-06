@@ -19,12 +19,81 @@ void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize){
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 
 }
-void Territory::calculateTerritory(std::vector<Wall> walls, std::vector<Castle> castles){
-    //TODO
 
+
+void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle){
+    //TODO
+    //TEST
+    /*std::cout << "REMPLISSAGE Territory"  << std::endl;
+    std::cout << "Territory_map.size() : " << territory_map.size() << std::endl;
+    std::cout << "sizeMap.x : " << sizeMap.x << std::endl;
+    std::cout << "sizeMap.y : " << sizeMap.y << std::endl;
+    
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (territory_map.at(y*sizeMap.x+x) == 0)
+            {
+                //WATER
+                std::cout << "WATER -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << std::endl;
+            }
+            if (territory_map.at(y*sizeMap.x+x) == 1)
+            {
+                //EARTH
+                std::cout << "EARTH -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << std::endl;
+            }
+        }
+    }*/
+    //FIN TEST
+
+    std::cout << "REMPLISSAGE"  << std::endl;
+    if (isCastle)
+    {
+        std::cout << "\tCastle"  << std::endl;
+        calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x+1, (uint)castlePosition.y), false);
+        calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x-1, (uint)castlePosition.y), false);
+        calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x, (uint)castlePosition.y+1), false);
+        calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x, (uint)castlePosition.y-1), false);
+    }
+    if (territory_map.at(castlePosition.y*sizeMap.x+castlePosition.x) == 1)
+    {
+        std::cout << "\tHerbe"  << std::endl;
+        if (!wallsHere(walls, sf::Vector2f(castlePosition.x*32+16, castlePosition.y*32+16)))
+        {
+            std::cout << "\tPas de Mur"  << std::endl;
+            territory_map.at(castlePosition.y*sizeMap.x+castlePosition.x)=2;
+            calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x+1, (uint)castlePosition.y), false);
+            calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x-1, (uint)castlePosition.y), false);
+            calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x, (uint)castlePosition.y+1), false);
+            calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x, (uint)castlePosition.y-1), false);
+        }
+    }
 }
 
 
-void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition){
-    //TODO
+bool Territory::wallsHere(std::vector<Wall> walls, sf::Vector2f cursor){
+    for (int i = 0; i < walls.size(); ++i)
+    {
+        if ( (int)(walls.at(i).getPos().x/32) == (int)(cursor.x/32) && (int)(walls.at(i).getPos().y/32) == (int)(cursor.y/32))
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Territory::whereIsTerritory()
+{
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                //Territory
+                std::cout << "Territory -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << std::endl;
+            }
+        }
+    }
 }
