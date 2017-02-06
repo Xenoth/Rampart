@@ -37,15 +37,13 @@ void Engine::resetGame(sf::Vector2u mapSize)
 
 void Engine::drawGame(sf::RenderWindow & window)
 {
-    mapManager.drawMap(window, frameCount);
-    
+    mapManager.drawMap(window, frameCount); 
+    territory.drawTerritory(window);
     castlesManager.drawCastles(window);
     gunsManager.drawGuns(window);
     shipsManager.drawShips(window);
     wallManager.drawWalls(window);
     bulletsManager.drawBullets(window);
-    territory.drawTerritory(window);
-    
 }
 
 bool Engine::addGun(sf::Vector2f cursor) {
@@ -94,6 +92,14 @@ void Engine::addShip(sf::Vector2f cursor) {
 
 void Engine::addShips() {
     while(shipsManager.getSizeShips() != 3){
+        cout << "NB Ships : " << shipsManager.getSizeShips() << endl;
+        addShip(sf::Vector2f(rand()%769, rand()%769));
+    }
+}
+
+void Engine::addNbShips(int nbNewShips){
+    nbNewShips = nbNewShips + shipsManager.getSizeShips();
+    while(shipsManager.getSizeShips() != nbNewShips){
         cout << "NB Ships : " << shipsManager.getSizeShips() << endl;
         addShip(sf::Vector2f(rand()%769, rand()%769));
     }
@@ -525,7 +531,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 }
                 else
                 {
-                    //ADDSHIPS(2);
+                    addNbShips(2);
                     stepPartie = 7;
                     newStep = true;
                 }
@@ -835,7 +841,7 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
         if (stepPartie == 8 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 25)
         {
             //Si pas de territoire => fin
-            //ADDSHIPS(2);
+            addNbShips(2);
             stepPartie = 7;
             newStep = true;
             switchStepPartie(event, window);

@@ -65,6 +65,8 @@ class Engine
 		void printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event event);
 		void newPartieQuestion(sf::RenderWindow &window);
 
+		void addNbShips(int nbNewShips);
+
 		sf::Clock clock;
 		sf::Time pauseClock;
 		bool pauseGame;
