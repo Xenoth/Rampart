@@ -307,6 +307,8 @@ Wall.h
 /home/gcretin/Bureau/Rampart/src/Wall.h
 AbstractDynamicEntity.h
 /home/gcretin/Bureau/Rampart/src/AbstractDynamicEntity.h
+Shootable.h
+/home/gcretin/Bureau/Rampart/src/Shootable.h
 
 /home/gcretin/Bureau/Rampart/src/WallManager.cpp
 WallManager.h

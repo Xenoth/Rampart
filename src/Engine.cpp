@@ -388,6 +388,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 pauseClock = clock.getElapsedTime();
             }
             generateWall();
+            drawGame(window);
             stepPartie = 5;
             newStep = true;
         }

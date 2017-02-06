@@ -22,31 +22,6 @@ void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize){
 
 
 void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle){
-    //TODO
-    //TEST
-    /*std::cout << "REMPLISSAGE Territory"  << std::endl;
-    std::cout << "Territory_map.size() : " << territory_map.size() << std::endl;
-    std::cout << "sizeMap.x : " << sizeMap.x << std::endl;
-    std::cout << "sizeMap.y : " << sizeMap.y << std::endl;
-    
-    for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (territory_map.at(y*sizeMap.x+x) == 0)
-            {
-                //WATER
-                std::cout << "WATER -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << std::endl;
-            }
-            if (territory_map.at(y*sizeMap.x+x) == 1)
-            {
-                //EARTH
-                std::cout << "EARTH -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << std::endl;
-            }
-        }
-    }*/
-    //FIN TEST
-
     std::cout << "REMPLISSAGE"  << std::endl;
     if (isCastle)
     {
@@ -69,6 +44,7 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
             calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x, (uint)castlePosition.y-1), false);
         }
     }
+    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
 

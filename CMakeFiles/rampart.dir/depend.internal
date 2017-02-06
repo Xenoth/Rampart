@@ -394,6 +394,8 @@ CMakeFiles/rampart.dir/src/MapManager.cpp.o
  /home/gcretin/Bureau/Rampart/src/AbstractEntity.h
  /home/gcretin/Bureau/Rampart/src/MapManager.cpp
  /home/gcretin/Bureau/Rampart/src/MapManager.h
+ /home/gcretin/Bureau/Rampart/src/Shootable.h
+ /home/gcretin/Bureau/Rampart/src/Shooter.h
  /home/gcretin/Bureau/Rampart/src/TileMap.h
  /home/gcretin/Bureau/Rampart/src/Wall.h
  /usr/local/include/SFML/Config.hpp
@@ -509,6 +511,8 @@ CMakeFiles/rampart.dir/src/Territory.cpp.o
  /home/gcretin/Bureau/Rampart/src/AbstractEntity.h
  /home/gcretin/Bureau/Rampart/src/AbstractStaticEntity.h
  /home/gcretin/Bureau/Rampart/src/Castle.h
+ /home/gcretin/Bureau/Rampart/src/Shootable.h
+ /home/gcretin/Bureau/Rampart/src/Shooter.h
  /home/gcretin/Bureau/Rampart/src/Territory.cpp
  /home/gcretin/Bureau/Rampart/src/Territory.h
  /home/gcretin/Bureau/Rampart/src/TileMap.h
@@ -588,6 +592,8 @@ CMakeFiles/rampart.dir/src/TileMap.cpp.o
 CMakeFiles/rampart.dir/src/Wall.cpp.o
  /home/gcretin/Bureau/Rampart/src/AbstractDynamicEntity.h
  /home/gcretin/Bureau/Rampart/src/AbstractEntity.h
+ /home/gcretin/Bureau/Rampart/src/Shootable.h
+ /home/gcretin/Bureau/Rampart/src/Shooter.h
  /home/gcretin/Bureau/Rampart/src/Wall.cpp
  /home/gcretin/Bureau/Rampart/src/Wall.h
  /usr/local/include/SFML/Config.hpp

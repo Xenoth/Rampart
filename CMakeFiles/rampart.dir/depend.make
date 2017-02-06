@@ -393,6 +393,8 @@ CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/AbstractDynamicEntity.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/AbstractEntity.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/MapManager.cpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/MapManager.h
+CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/Shootable.h
+CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/Shooter.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/TileMap.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/Wall.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Config.hpp
@@ -508,6 +510,8 @@ CMakeFiles/rampart.dir/src/Territory.cpp.o: src/AbstractDynamicEntity.h
 CMakeFiles/rampart.dir/src/Territory.cpp.o: src/AbstractEntity.h
 CMakeFiles/rampart.dir/src/Territory.cpp.o: src/AbstractStaticEntity.h
 CMakeFiles/rampart.dir/src/Territory.cpp.o: src/Castle.h
+CMakeFiles/rampart.dir/src/Territory.cpp.o: src/Shootable.h
+CMakeFiles/rampart.dir/src/Territory.cpp.o: src/Shooter.h
 CMakeFiles/rampart.dir/src/Territory.cpp.o: src/Territory.cpp
 CMakeFiles/rampart.dir/src/Territory.cpp.o: src/Territory.h
 CMakeFiles/rampart.dir/src/Territory.cpp.o: src/TileMap.h
@@ -587,6 +591,8 @@ CMakeFiles/rampart.dir/src/TileMap.cpp.o: /usr/local/include/SFML/Window/WindowS
 
 CMakeFiles/rampart.dir/src/Wall.cpp.o: src/AbstractDynamicEntity.h
 CMakeFiles/rampart.dir/src/Wall.cpp.o: src/AbstractEntity.h
+CMakeFiles/rampart.dir/src/Wall.cpp.o: src/Shootable.h
+CMakeFiles/rampart.dir/src/Wall.cpp.o: src/Shooter.h
 CMakeFiles/rampart.dir/src/Wall.cpp.o: src/Wall.cpp
 CMakeFiles/rampart.dir/src/Wall.cpp.o: src/Wall.h
 CMakeFiles/rampart.dir/src/Wall.cpp.o: /usr/local/include/SFML/Config.hpp
