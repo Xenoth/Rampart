@@ -485,8 +485,11 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                         case sf::Event::MouseButtonPressed:
                         {
                             if (event.mouseButton.button == sf::Mouse::Left) {
-                                //Test TODO
                                 addWall(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+                                cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
+                            }
+                            if (event.mouseButton.button == sf::Mouse::Right) {
+                                addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                                 cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
                             }
                         }
