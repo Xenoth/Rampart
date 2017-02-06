@@ -226,6 +226,7 @@ CMakeFiles/rampart.dir/src/Engine.cpp.o: src/Audio.h
 CMakeFiles/rampart.dir/src/Engine.cpp.o: src/Bullet.h
 CMakeFiles/rampart.dir/src/Engine.cpp.o: src/BulletsManager.h
 CMakeFiles/rampart.dir/src/Engine.cpp.o: src/Castle.h
+CMakeFiles/rampart.dir/src/Engine.cpp.o: src/CastlesManager.h
 CMakeFiles/rampart.dir/src/Engine.cpp.o: src/Engine.cpp
 CMakeFiles/rampart.dir/src/Engine.cpp.o: src/Engine.h
 CMakeFiles/rampart.dir/src/Engine.cpp.o: src/Explosable.h
@@ -653,6 +654,7 @@ CMakeFiles/rampart.dir/src/main.cpp.o: src/Audio.h
 CMakeFiles/rampart.dir/src/main.cpp.o: src/Bullet.h
 CMakeFiles/rampart.dir/src/main.cpp.o: src/BulletsManager.h
 CMakeFiles/rampart.dir/src/main.cpp.o: src/Castle.h
+CMakeFiles/rampart.dir/src/main.cpp.o: src/CastlesManager.h
 CMakeFiles/rampart.dir/src/main.cpp.o: src/Engine.h
 CMakeFiles/rampart.dir/src/main.cpp.o: src/Explosable.h
 CMakeFiles/rampart.dir/src/main.cpp.o: src/Exploser.h

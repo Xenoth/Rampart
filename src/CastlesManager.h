@@ -18,6 +18,10 @@ public:
     void drawCastles(sf::RenderWindow &window);
     inline void clearCastles() { castles.clear(); };
 
+    void placeCastle(sf::Vector2f pos);
+    size_t getSizeCastles();
+    sf::Vector2f getPositionCastle(size_t i);
+
     std::vector<Castle> castles;
 
 private:

@@ -227,6 +227,7 @@ CMakeFiles/rampart.dir/src/Engine.cpp.o
  /home/gcretin/Bureau/Rampart/src/Bullet.h
  /home/gcretin/Bureau/Rampart/src/BulletsManager.h
  /home/gcretin/Bureau/Rampart/src/Castle.h
+ /home/gcretin/Bureau/Rampart/src/CastlesManager.h
  /home/gcretin/Bureau/Rampart/src/Engine.cpp
  /home/gcretin/Bureau/Rampart/src/Engine.h
  /home/gcretin/Bureau/Rampart/src/Explosable.h
@@ -654,6 +655,7 @@ CMakeFiles/rampart.dir/src/main.cpp.o
  /home/gcretin/Bureau/Rampart/src/Bullet.h
  /home/gcretin/Bureau/Rampart/src/BulletsManager.h
  /home/gcretin/Bureau/Rampart/src/Castle.h
+ /home/gcretin/Bureau/Rampart/src/CastlesManager.h
  /home/gcretin/Bureau/Rampart/src/Engine.h
  /home/gcretin/Bureau/Rampart/src/Explosable.h
  /home/gcretin/Bureau/Rampart/src/Exploser.h

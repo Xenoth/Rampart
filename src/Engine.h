@@ -18,6 +18,7 @@
 #include "ShipsManager.h"
 #include "WallManager.h"
 #include "Territory.h"
+#include "CastlesManager.h"
 #include "Audio.h"
 
 class Engine
@@ -83,6 +84,7 @@ class Engine
 		MapManager mapManager;
 		WallManager wallManager;
 		Territory territory;
+		CastlesManager castlesManager;
 
 		Audio audio;
 

@@ -4,44 +4,45 @@ using namespace std;
 
 Engine::Engine()
 {
-	gunsManager.addShooter2Guns(&bulletsManager);
-	gunsManager.addShooter2Guns(&audio);
+    gunsManager.addShooter2Guns(&bulletsManager);
+    gunsManager.addShooter2Guns(&audio);
 
-	shipsManager.addShooter2Ships(&bulletsManager);
-	shipsManager.addShooter2Ships(&audio);
+    shipsManager.addShooter2Ships(&bulletsManager);
+    shipsManager.addShooter2Ships(&audio);
 
-	bulletsManager.addExploser2Bullets(&gunsManager);
-	bulletsManager.addExploser2Bullets(&shipsManager);
-	bulletsManager.addExploser2Bullets(&audio);
+    bulletsManager.addExploser2Bullets(&gunsManager);
+    bulletsManager.addExploser2Bullets(&shipsManager);
+    bulletsManager.addExploser2Bullets(&audio);
 
-	stepPartie = 2;
-	newStep = false;
-	pauseGame = false;
+    stepPartie = 2;
+    newStep = false;
+    pauseGame = false;
 
-	fontAncient.loadFromFile("ressources/ancient_medium.ttf");
-	texture.loadFromFile("ressources/black_opacity.png");
+    fontAncient.loadFromFile("ressources/ancient_medium.ttf");
+    texture.loadFromFile("ressources/black_opacity.png");
     
 }
 
 void Engine::resetGame(sf::Vector2u mapSize)
 {
-	mapManager.generateMap(mapSize);
-	gunsManager.clearGuns();
-	bulletsManager.clearBullets();
-	shipsManager.clearShips();
+    mapManager.generateMap(mapSize);
+    gunsManager.clearGuns();
+    bulletsManager.clearBullets();
+    shipsManager.clearShips();
     wallManager.clearWalls();
+    castlesManager.clearCastles();
     audio.playMusic();
-	frameCount=0;
+    frameCount=0;
 }
 
 void Engine::drawGame(sf::RenderWindow & window)
 {
-	mapManager.drawMap(window, frameCount);
-	//castlesManager.drawCastles(window);
-	gunsManager.drawGuns(window);
-	shipsManager.drawShips(window);
+    mapManager.drawMap(window, frameCount);
+    castlesManager.drawCastles(window);
+    gunsManager.drawGuns(window);
+    shipsManager.drawShips(window);
     wallManager.drawWalls(window);
-	bulletsManager.drawBullets(window);
+    bulletsManager.drawBullets(window);
     //territory.drawTerritory(window);
 }
 
@@ -57,8 +58,13 @@ bool Engine::addGun(sf::Vector2f cursor) {
 }
 
 bool Engine::chooseCastle(sf::Vector2f cursor) {
-	sf::Vector2u coord = cursor2Grid(cursor);
-	return mapManager.isCastle(coord);
+    sf::Vector2u coord = cursor2Grid(cursor);
+    bool canConstructCastle = mapManager.isConstructibleCastle(coord);
+    if (canConstructCastle)
+    {
+        castlesManager.placeCastle(sf::Vector2f(coord.x*32+16, coord.y*32+16));
+    }
+    return canConstructCastle;
 }
 
 void Engine::addWall(sf::Vector2f cursor){
@@ -74,75 +80,75 @@ void Engine::addWall(sf::Vector2f cursor){
 }
 
 void Engine::addShip(sf::Vector2f cursor) {
-	sf::Vector2u coord = cursor2Grid(cursor);
-	if(mapManager.isNavigable(coord))
-	{
-		if (!shipsManager.shipsHere(cursor))
-		{
-			shipsManager.placeShip(sf::Vector2f(coord.x*32+16, coord.y*32+16));
+    sf::Vector2u coord = cursor2Grid(cursor);
+    if(mapManager.isNavigable(coord))
+    {
+        if (!shipsManager.shipsHere(cursor))
+        {
+            shipsManager.placeShip(sf::Vector2f(coord.x*32+16, coord.y*32+16));
         }
-	}
+    }
 }
 
 void Engine::addShips() {
-	while(shipsManager.getSizeShips() != 3){
-		cout << "NB Ships : " << shipsManager.getSizeShips() << endl;
-		addShip(sf::Vector2f(rand()%769, rand()%769));
-	}
+    while(shipsManager.getSizeShips() != 3){
+        cout << "NB Ships : " << shipsManager.getSizeShips() << endl;
+        addShip(sf::Vector2f(rand()%769, rand()%769));
+    }
 }
 
 bool Engine::shootGun(sf::Vector2f target) { 
-	if(!gunsManager.shoot(target))
-		std::cout << "cannot shoot"  << std::endl;
+    if(!gunsManager.shoot(target))
+        std::cout << "cannot shoot"  << std::endl;
 }
 
 void Engine::update(sf::Vector2f mouse){
-	bulletsManager.moveBullets();
-	gunsManager.rotateGuns(mouse);
-	frameCount++;
+    bulletsManager.moveBullets();
+    gunsManager.rotateGuns(mouse);
+    frameCount++;
 }
 
 sf::Vector2u Engine::cursor2Grid(sf::Vector2f cursor) {
-	return sf::Vector2u((uint)cursor.x/32, (uint)cursor.y/32);
+    return sf::Vector2u((uint)cursor.x/32, (uint)cursor.y/32);
 }
 
 vector<sf::Vector2<int> > Engine::generateCloud(size_t height_range, size_t width_range)
 {
-	vector<sf::Vector2<int> > cloud;
-	for(size_t i=0; i<(height_range*width_range)/25; i++)
-	{
-		sf::Vector2<int> pos;
-		bool isFree=true;
-		
-		do
-		{
-			isFree=true;
-			pos.x=rand() % height_range;
-			pos.y=rand() % width_range;
-				
-			for(size_t j=0; j<cloud.size(); j++)
-			{
-				if(pos.x >= cloud.at(j).x-3 && pos.x<=cloud.at(j).x+3 && pos.y >= cloud.at(j).y-3 && pos.y<=cloud.at(j).y+3)
-				{
-					cout << "collision" << endl;
-					isFree=false;
-					break;
-				}
-			}
-			
-		}while(!isFree);
-		
-		cloud.push_back(pos);
-	}	
-	return cloud;
+    vector<sf::Vector2<int> > cloud;
+    for(size_t i=0; i<(height_range*width_range)/25; i++)
+    {
+        sf::Vector2<int> pos;
+        bool isFree=true;
+        
+        do
+        {
+            isFree=true;
+            pos.x=rand() % height_range;
+            pos.y=rand() % width_range;
+                
+            for(size_t j=0; j<cloud.size(); j++)
+            {
+                if(pos.x >= cloud.at(j).x-3 && pos.x<=cloud.at(j).x+3 && pos.y >= cloud.at(j).y-3 && pos.y<=cloud.at(j).y+3)
+                {
+                    cout << "collision" << endl;
+                    isFree=false;
+                    break;
+                }
+            }
+            
+        }while(!isFree);
+        
+        cloud.push_back(pos);
+    }   
+    return cloud;
 }
 
 int Engine::getSizeGuns(){
-	return gunsManager.getSizeGuns();
+    return gunsManager.getSizeGuns();
 }
 
 int Engine::getSizeShips(){
-	return shipsManager.getSizeShips();
+    return shipsManager.getSizeShips();
 }
 
 int Engine::getSizeWalls(){
@@ -151,7 +157,7 @@ int Engine::getSizeWalls(){
 
 void Engine::moveOrShoot()
 {
-	for (size_t i = 0; i < shipsManager.getSizeShips(); ++i) {
+    for (size_t i = 0; i < shipsManager.getSizeShips(); ++i) {
         cout << "|-----------------Ship n°" << i << endl;
         //Retardement shoot
 
@@ -173,152 +179,158 @@ void Engine::moveOrShoot()
                 shipsManager.shoot(i, wallManager.wallPosition(target));
             }
         } else {
-        	sf::Vector2f shipPos = shipsManager.getPositionShip(i);
-			
-        	if (shipPos.x == shipsManager.getDestination(i).x && shipPos.y == shipsManager.getDestination(i).y)
-        	{
-        		shipsManager.setNoneDestination(i);
-        	}
+            sf::Vector2f shipPos = shipsManager.getPositionShip(i);
+            
+            if (shipPos.x == shipsManager.getDestination(i).x && shipPos.y == shipsManager.getDestination(i).y)
+            {
+                shipsManager.setNoneDestination(i);
+            }
 
-        	if (!shipsManager.AShipHasDestination(i))
-        	{
-        		sf::Vector2f destination;
-    			sf::Vector2u coord;
-        		destination = sf::Vector2f(rand()%769, rand()%769);
-        			
-        		while(!mapManager.isNavigable(coord)){
-        			destination = sf::Vector2f(rand()%769, rand()%769);
-        			coord = cursor2Grid(destination);
-        		}
-        		cout << "-------------------------------------------" << destination.x << ", " << destination.y << endl;
-        		shipsManager.ShipSetDestination(i, destination);
-        	}
+            if (!shipsManager.AShipHasDestination(i))
+            {
+                sf::Vector2f destination;
+                sf::Vector2u coord;
+                destination = sf::Vector2f(rand()%769, rand()%769);
+                    
+                while(!mapManager.isNavigable(coord)){
+                    destination = sf::Vector2f(rand()%769, rand()%769);
+                    coord = cursor2Grid(destination);
+                }
+                cout << "-------------------------------------------" << destination.x << ", " << destination.y << endl;
+                shipsManager.ShipSetDestination(i, destination);
+            }
 
 
-        	cout << "MOVE" << endl;
-        	cout << "Destination : (" << shipsManager.getDestination(i).x << ", " << shipsManager.getDestination(i).y << ")" << endl;
-        	
+            cout << "MOVE" << endl;
+            cout << "Destination : (" << shipsManager.getDestination(i).x << ", " << shipsManager.getDestination(i).y << ")" << endl;
+            
             cout << "From : (" << shipPos.x << ", " << shipPos.y << ")" << endl;
 
 
-			if(shipPos.x < shipsManager.getDestination(i).x){
-				shipPos.x = shipPos.x + 1;
-			}
-			if(shipPos.x > shipsManager.getDestination(i).x){
-				shipPos.x = shipPos.x - 1;
-			}
-			if(shipPos.y < shipsManager.getDestination(i).y){
-				shipPos.y = shipPos.y + 1;
-			}
-			if(shipPos.y > shipsManager.getDestination(i).y){
-				shipPos.y = shipPos.y - 1;
-			}
+            if(shipPos.x < shipsManager.getDestination(i).x){
+                shipPos.x = shipPos.x + 1;
+            }
+            if(shipPos.x > shipsManager.getDestination(i).x){
+                shipPos.x = shipPos.x - 1;
+            }
+            if(shipPos.y < shipsManager.getDestination(i).y){
+                shipPos.y = shipPos.y + 1;
+            }
+            if(shipPos.y > shipsManager.getDestination(i).y){
+                shipPos.y = shipPos.y - 1;
+            }
 
 
-			sf::Vector2u testNavigable = cursor2Grid(shipPos);
-			if (!mapManager.isNavigable(testNavigable))
-			{
-				sf::Vector2f destination;
-	    		sf::Vector2u coord;
-				destination = sf::Vector2f(rand()%769, rand()%769);
-	        			
-	    		while(!mapManager.isNavigable(coord))
-	    		{
-	    			destination = sf::Vector2f(rand()%769, rand()%769);
-	    			coord = cursor2Grid(destination);
-	    		}
-	    		cout << "-------------------------------------------" << destination.x << ", " << destination.y << endl;
-	    		shipsManager.ShipSetDestination(i, destination);
-			}
-			else
+            sf::Vector2u testNavigable = cursor2Grid(shipPos);
+            if (!mapManager.isNavigable(testNavigable))
+            {
+                sf::Vector2f destination;
+                sf::Vector2u coord;
+                destination = sf::Vector2f(rand()%769, rand()%769);
+                        
+                while(!mapManager.isNavigable(coord))
+                {
+                    destination = sf::Vector2f(rand()%769, rand()%769);
+                    coord = cursor2Grid(destination);
+                }
+                cout << "-------------------------------------------" << destination.x << ", " << destination.y << endl;
+                shipsManager.ShipSetDestination(i, destination);
+            }
+            else
                 shipsManager.move(i, shipPos);
 
-			cout << "To : (" << shipPos.x << ", " << shipPos.y << ")" << endl;
-			
+            cout << "To : (" << shipPos.x << ", " << shipPos.y << ")" << endl;
+            
 
         }
     }
 }
 
 void Engine::generateWall(){
-    //TODO By a Castle : 
-    
-    int xmin = 14-2; // 14 = castle.x;
-    int xmax = 14+2;
-    int ymin = 5-2;  // 5 = castle.y;
-    int ymax = 5+2; 
-    
-    for(int x = xmin; x <= xmax; x++){
-        addWall(sf::Vector2f(x*32+16, ymin*32+16));
-        addWall(sf::Vector2f(x*32+16, ymax*32+16));    
-    }
-    for(int y = ymin+1; y <= ymax-1; y++){
-        addWall(sf::Vector2f(xmin*32+16, y*32+16));
-        addWall(sf::Vector2f(xmax*32+16, y*32+16));    
+    for (int i = 0; i < castlesManager.getSizeCastles(); ++i)
+    {
+        sf::Vector2u castlePosition = cursor2Grid(castlesManager.getPositionCastle(i));
+        int xmin = castlePosition.x-2; // 14 = castle.x;
+        int xmax = castlePosition.x+2;
+        int ymin = castlePosition.y-2;  // 5 = castle.y;
+        int ymax = castlePosition.y+2; 
+
+        cout << "CastlePosition : (" << castlePosition.x << ", "<< castlePosition.y << ")" << endl;
+        
+        for(int x = xmin; x <= xmax; x++){
+            addWall(sf::Vector2f(x*32+16, ymin*32+16));
+            addWall(sf::Vector2f(x*32+16, ymax*32+16));    
+        }
+        for(int y = ymin+1; y <= ymax-1; y++){
+            addWall(sf::Vector2f(xmin*32+16, y*32+16));
+            addWall(sf::Vector2f(xmax*32+16, y*32+16));    
+        }
     }
 
     testTerritory();   
 }
 
 void Engine::testTerritory(){
-    //TEST
-    sf::Vector2u castlePosition = mapManager.getCastlePosition();
-    cout << "CASTLEPOSITION : (" << castlePosition.x << ", " << castlePosition.y << ")" << endl;
-    mapManager.remplissage(wallManager.walls, castlePosition);
+    for (int i = 0; i < castlesManager.getSizeCastles(); ++i)
+    {
+        sf::Vector2u castlePosition = cursor2Grid(castlesManager.getPositionCastle(i));
+        cout << "CASTLEPOSITION : (" << castlePosition.x << ", " << castlePosition.y << ")" << endl;
+        mapManager.remplissage(wallManager.walls, castlePosition);
+    }
 }
 
 void Engine::setStepPartie(int i){
-	stepPartie = i;
+    stepPartie = i;
 }
 
 int Engine::getStepPartie()
 {
-	return stepPartie;
+    return stepPartie;
 }
 
 void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
 {
-	enum step {
-				GAME_INTRO = 0, 
-				GAME_PAUSE = 1,
-				MAP_GENERATION = 2,
-				CASTLE_CHOOSE = 3,
-				WALL_GENERATION = 4,
-				PLACE_3_GUNS = 5,
-				SHIPS_GENERATION = 6,
-				FIGHT = 7,
-				REPARATION = 8,
-				END = 9
-			  };
+    enum step {
+                GAME_INTRO = 0, 
+                GAME_PAUSE = 1,
+                MAP_GENERATION = 2,
+                CASTLE_CHOOSE = 3,
+                WALL_GENERATION = 4,
+                PLACE_3_GUNS = 5,
+                SHIPS_GENERATION = 6,
+                FIGHT = 7,
+                REPARATION = 8,
+                END = 9
+              };
 
-	switch(stepPartie)
-	{
-		case GAME_INTRO:
-		{
-			cout << "GAME_INTRO" << endl;
-			game_intro(window);
-		}
-		break;
+    switch(stepPartie)
+    {
+        case GAME_INTRO:
+        {
+            cout << "GAME_INTRO" << endl;
+            game_intro(window);
+        }
+        break;
 
-		case GAME_PAUSE:
-		{
-			cout << "GAME_PAUSE" << endl;
-		}
-		break;
+        case GAME_PAUSE:
+        {
+            cout << "GAME_PAUSE" << endl;
+        }
+        break;
 
-		case MAP_GENERATION:
-		{
-			cout << "MAP_GENERATION" << endl;
-			srand(time(NULL));
-			resetGame(sf::Vector2u(768/32, 768/32));
+        case MAP_GENERATION:
+        {
+            cout << "MAP_GENERATION" << endl;
+            srand(time(NULL));
+            resetGame(sf::Vector2u(768/32, 768/32));
             stepPartie = 3;
             newStep = true;
-		}
-		break;
+        }
+        break;
 
-		case CASTLE_CHOOSE:
-		{
-			if (newStep)
+        case CASTLE_CHOOSE:
+        {
+            if (newStep)
             {
                 introPartie(window, "Choose a castle");
                 cout << "CASTLE_CHOOSE" << endl;
@@ -344,12 +356,12 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 default:
                 break;
             }
-		}
-		break;
+        }
+        break;
 
-		case WALL_GENERATION:
-		{
-			if (newStep)
+        case WALL_GENERATION:
+        {
+            if (newStep)
             {
                 introPartie(window, "Generate wall");
                 cout << "WALL_GENERATION" << endl;
@@ -360,12 +372,12 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             generateWall();
             stepPartie = 5;
             newStep = true;
-		}
-		break;
+        }
+        break;
 
-		case PLACE_3_GUNS:
-		{
-			if (newStep)
+        case PLACE_3_GUNS:
+        {
+            if (newStep)
             {
                 introPartie(window, "Place 3 guns Max in 15 seconds");
                 cout << "PLACE_3_GUNS" << endl;
@@ -401,12 +413,12 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 stepPartie = 6;
                 newStep = true;
             }
-		}
-		break;
+        }
+        break;
 
-		case SHIPS_GENERATION:
-		{
-			if (newStep)
+        case SHIPS_GENERATION:
+        {
+            if (newStep)
             {
                 introPartie(window, "Generate 3 ships");
                 cout << "SHIPS_GENERATION" << endl;
@@ -417,17 +429,17 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             addShips();
             stepPartie = 7;
             newStep = true;
-		}
-		break;
+        }
+        break;
 
-		case FIGHT:
-		{
-			if (newStep)
+        case FIGHT:
+        {
+            if (newStep)
             {
                 introPartie(window, "Ships shoot walls & Player shoot ships with guns during 15 seconds");
                 cout << "FIGHT" << endl;
                 newStep = false;
-               	clock.restart();
+                clock.restart();
                 pauseClock = clock.getElapsedTime();
             }
             cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
@@ -462,16 +474,16 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                     newStep = true;
                 }
             }
-		}
-		break;
+        }
+        break;
 
-		case REPARATION:
-		{
-			if (newStep)
+        case REPARATION:
+        {
+            if (newStep)
             {
                 introPartie(window, "Player repair walls if they are a ships during 25 seconds");
                 cout << "REPARATION" << endl;
-				newStep = false;
+                newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
             }
@@ -501,6 +513,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 }
                 else
                 {
+                    //ADDSHIPS(2);
                     stepPartie = 7;
                     newStep = true;
                 }
@@ -510,12 +523,12 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 stepPartie = 9;
                 newStep = true;
             }
-		}
-		break;
+        }
+        break;
 
-		case END:
-		{
-			if (newStep)
+        case END:
+        {
+            if (newStep)
             {
                 //introPartie(window, "End of the game");
                 cout << "END" << endl;
@@ -525,15 +538,15 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 newPartieQuestion(window);
             }
             //window.close();
-		}
-		break;
+        }
+        break;
 
-		default:
-		{
-			cout << "HOUSTON !! We have a problem !!!" << endl;
-		}
-		break;
-	}
+        default:
+        {
+            cout << "HOUSTON !! We have a problem !!!" << endl;
+        }
+        break;
+    }
 }
 
 
@@ -562,7 +575,7 @@ void Engine::introPartie(sf::RenderWindow &window, char *texte){
 
     while(1) {
         while (window.pollEvent(event)) {
-        	switch(event.type){
+            switch(event.type){
                 case sf::Event::Closed:
                 {
                     window.close();
@@ -571,11 +584,11 @@ void Engine::introPartie(sf::RenderWindow &window, char *texte){
 
                 case sf::Event::KeyPressed:
                 {
-                	if (event.key.code == sf::Keyboard::Return){
-                		window.clear(sf::Color(255,255,255,255));
-						drawGame(window);
-                    	return;
-                	}
+                    if (event.key.code == sf::Keyboard::Return){
+                        window.clear(sf::Color(255,255,255,255));
+                        drawGame(window);
+                        return;
+                    }
                     else if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
                     }
@@ -619,7 +632,7 @@ void Engine::pause_game(sf::RenderWindow &window){
 
     while(1) {
         while (window.pollEvent(event)) {
-        	switch(event.type){
+            switch(event.type){
                 case sf::Event::Closed:
                 {
                     window.close();
@@ -628,11 +641,11 @@ void Engine::pause_game(sf::RenderWindow &window){
 
                 case sf::Event::KeyPressed:
                 {
-                	if (event.key.code == sf::Keyboard::P){
-                		window.clear(sf::Color(255,255,255,255));
-						drawGame(window);
-                    	return;
-                	}
+                    if (event.key.code == sf::Keyboard::P){
+                        window.clear(sf::Color(255,255,255,255));
+                        drawGame(window);
+                        return;
+                    }
                     else if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
                     }
@@ -654,38 +667,38 @@ void Engine::pause_game(sf::RenderWindow &window){
 
 
 void Engine::game_intro(sf::RenderWindow &window){
-	sf::Text titleGame;
+    sf::Text titleGame;
     sf::Text powered;
-	sf::Texture textures[2];
-	sf::Sprite logo_c;
-	sf::Sprite logo_sfml;
+    sf::Texture textures[2];
+    sf::Sprite logo_c;
+    sf::Sprite logo_sfml;
 
-	titleGame.setString("RAMPART");
-	titleGame.setCharacterSize(120);
-	titleGame.setFont(fontAncient);
-	titleGame.setPosition(120,100);
+    titleGame.setString("RAMPART");
+    titleGame.setCharacterSize(120);
+    titleGame.setFont(fontAncient);
+    titleGame.setPosition(120,100);
     powered.setString("powered by");
     powered.setCharacterSize(40);
     powered.setFont(fontAncient);
     powered.setPosition(170, 440);
 
-	textures[0].loadFromFile("ressources/logo_c.png");
-	textures[1].loadFromFile("ressources/logo_sfml.png");
-	logo_c.setTexture(textures[0]);
-	logo_sfml.setTexture(textures[1]);
-	logo_c.setPosition(200,500);
-	logo_sfml.setPosition(330,510);
+    textures[0].loadFromFile("ressources/logo_c.png");
+    textures[1].loadFromFile("ressources/logo_sfml.png");
+    logo_c.setTexture(textures[0]);
+    logo_sfml.setTexture(textures[1]);
+    logo_c.setPosition(200,500);
+    logo_sfml.setPosition(330,510);
 
-	window.clear(sf::Color(0,0,0,255));
-	window.draw(titleGame);
-	window.draw(logo_c);
-	window.draw(logo_sfml);
+    window.clear(sf::Color(0,0,0,255));
+    window.draw(titleGame);
+    window.draw(logo_c);
+    window.draw(logo_sfml);
     window.draw(powered);
-	window.display();
+    window.display();
 
-	sf::sleep(sf::milliseconds(2500));
+    sf::sleep(sf::milliseconds(2500));
     
-	window.clear(sf::Color(0,0,0,255));
+    window.clear(sf::Color(0,0,0,255));
 
     sf::Text command_title, command_mouse_1, /*command_mouse_2,*/ command_mouse_3, command_pause, command_reset, command_exit, confirm;
     command_title.setString("Controlls");
@@ -735,7 +748,7 @@ void Engine::game_intro(sf::RenderWindow &window){
 
     while(1) {
         while (window.pollEvent(event)) {
-        	switch(event.type){
+            switch(event.type){
                 case sf::Event::Closed:
                 {
                     window.close();
@@ -744,9 +757,9 @@ void Engine::game_intro(sf::RenderWindow &window){
 
                 case sf::Event::KeyPressed:
                 {
-                	if (event.key.code == sf::Keyboard::Space){
-                    	return;
-                	}
+                    if (event.key.code == sf::Keyboard::Space){
+                        return;
+                    }
                     else if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
                     }
@@ -755,20 +768,20 @@ void Engine::game_intro(sf::RenderWindow &window){
 
                 default:
                 break;
-			}
+            }
         }
     }
 }
 
 void Engine::move()
 {
-	if(stepPartie==7)
+    if(stepPartie==7)
         moveOrShoot();
 }
 
 void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event event)
 {
-	if (stepPartie == 5 || stepPartie == 7 || stepPartie == 8)
+    if (stepPartie == 5 || stepPartie == 7 || stepPartie == 8)
     {
         std::stringstream texteChrono;
         texteChrono.precision(2);
@@ -778,24 +791,24 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
         chrono.setCharacterSize(40);
         chrono.setPosition(0,0);
         window.draw(chrono);
-    	
-    	if (stepPartie == 5 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
-    	{
-    		if (getSizeGuns() == 0)
-	        {
-	            stepPartie = 9;
-	            newStep = true;
-	        }else{
-	        	stepPartie = 6;
-	            newStep = true;
-	        }
-	        switchStepPartie(event, window);
-    	}
-    	if (stepPartie == 7 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
-    	{
+        
+        if (stepPartie == 5 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
+        {
+            if (getSizeGuns() == 0)
+            {
+                stepPartie = 9;
+                newStep = true;
+            }else{
+                stepPartie = 6;
+                newStep = true;
+            }
+            switchStepPartie(event, window);
+        }
+        if (stepPartie == 7 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
+        {
             bulletsManager.clearBullets();
             shipsManager.setCanShootAll();
-    		if (getSizeShips() != 0)
+            if (getSizeShips() != 0)
             {
                 stepPartie = 8;
                 newStep = true;
@@ -806,14 +819,15 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
                 newStep = true;
             }
             switchStepPartie(event, window);
-    	}
-    	if (stepPartie == 8 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 25)
-    	{
-    		//Si pas de territoire => fin
+        }
+        if (stepPartie == 8 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 25)
+        {
+            //Si pas de territoire => fin
+            //ADDSHIPS(2);
             stepPartie = 7;
             newStep = true;
             switchStepPartie(event, window);
-    	}
+        }
     }
 }
 
@@ -838,7 +852,7 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
 
     while(1) {
         while (window.pollEvent(event)) {
-        	switch(event.type){
+            switch(event.type){
                 case sf::Event::Closed:
                 {
                     window.close();
@@ -847,11 +861,11 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
 
                 case sf::Event::KeyPressed:
                 {
-                	if (event.key.code == sf::Keyboard::Return){
-                		window.clear(sf::Color(255,255,255,255));
-						drawGame(window);
-                    	return;
-                	}
+                    if (event.key.code == sf::Keyboard::Return){
+                        window.clear(sf::Color(255,255,255,255));
+                        drawGame(window);
+                        return;
+                    }
                     else if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
                     }

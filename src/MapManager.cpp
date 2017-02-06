@@ -74,7 +74,7 @@ void MapManager::drawMap(sf::RenderWindow & window, size_t frameCount)
 		window.draw(map3);
 }
 
-
+/*
 sf::Vector2u MapManager::getCastlePosition(){
 	for (size_t i = 0; i < mapSize.x; ++i)
 	{
@@ -88,12 +88,12 @@ sf::Vector2u MapManager::getCastlePosition(){
 	}
 	return sf::Vector2u((uint)0, (uint)0);
 }
-
+*/
 
 
 void MapManager::remplissage(std::vector<Wall> walls, sf::Vector2u position){
 	std::cout << "REMPLISSAGE"  << std::endl;
-	if (isCastle(position))
+	if (isConstructibleCastle(position))
 	{
 		std::cout << "\tCastle"  << std::endl;
 		remplissage(walls, sf::Vector2u((uint)position.x+1, (uint)position.y));

@@ -131,6 +131,8 @@ WallManager.h
 /home/gcretin/Bureau/Rampart/src/WallManager.h
 Territory.h
 /home/gcretin/Bureau/Rampart/src/Territory.h
+CastlesManager.h
+/home/gcretin/Bureau/Rampart/src/CastlesManager.h
 Audio.h
 /home/gcretin/Bureau/Rampart/src/Audio.h
 
