@@ -25,6 +25,8 @@ class ShipsManager : public Exploser {
         void moveOrShoot();
         bool AShipCanShoot(size_t i);
         void ChangeCanShoot(size_t i);
+        void setCanShoot(size_t i);
+        void setCanShootAll();
 
         sf::Vector2f getPositionShip(size_t i);
         void move(size_t i, sf::Vector2f pos);

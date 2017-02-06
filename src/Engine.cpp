@@ -450,6 +450,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             else
             {
                 bulletsManager.clearBullets();
+                shipsManager.setCanShootAll();
                 if (getSizeShips() != 0)
                 {
                     stepPartie = 8;
@@ -790,6 +791,7 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
     	if (stepPartie == 7 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
     	{
             bulletsManager.clearBullets();
+            shipsManager.setCanShootAll();
     		if (getSizeShips() != 0)
             {
                 stepPartie = 8;

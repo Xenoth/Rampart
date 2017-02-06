@@ -48,6 +48,19 @@ void ShipsManager::ChangeCanShoot(size_t i)
     ships.at(i).canShoot = (!ships.at(i).canShoot);
 }
 
+void ShipsManager::setCanShoot(size_t i)
+{
+    ships.at(i).canShoot = true;
+}
+
+void ShipsManager::setCanShootAll()
+{
+    for(size_t i=0; i<ships.size(); i++)
+    {
+        setCanShoot(i);
+    }
+}
+
 sf::Vector2f ShipsManager::getPositionShip(size_t i)
 {
     return ships.at(i).getPos();
