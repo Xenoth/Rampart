@@ -265,7 +265,6 @@ void Engine::testTerritory(){
     sf::Vector2u castlePosition = mapManager.getCastlePosition();
     cout << "CASTLEPOSITION : (" << castlePosition.x << ", " << castlePosition.y << ")" << endl;
     mapManager.remplissage(wallManager.walls, castlePosition);
-    //territory.calculateTerritory(wallManager.walls, castlePosition);
 }
 
 void Engine::setStepPartie(int i){
@@ -450,6 +449,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             }
             else
             {
+                bulletsManager.clearBullets();
                 if (getSizeShips() != 0)
                 {
                     stepPartie = 8;
@@ -789,6 +789,7 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
     	}
     	if (stepPartie == 7 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
     	{
+            bulletsManager.clearBullets();
     		if (getSizeShips() != 0)
             {
                 stepPartie = 8;
