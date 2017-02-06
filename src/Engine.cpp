@@ -158,7 +158,7 @@ void Engine::moveOrShoot()
         if (shipsManager.AShipCanShoot(i)) {
             cout << "SHOOT" << endl;
             //Gun or Wall
-            size_t wallOrGun = rand()%3;
+            size_t wallOrGun = rand()%4;
             if (wallOrGun == 0){
                 //Target = Gun
                 size_t target = (rand() % gunsManager.getSizeGuns());
