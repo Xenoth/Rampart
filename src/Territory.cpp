@@ -23,3 +23,8 @@ void Territory::calculateTerritory(std::vector<Wall> walls, std::vector<Castle> 
     //TODO
 
 }
+
+
+void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition){
+    //TODO
+}

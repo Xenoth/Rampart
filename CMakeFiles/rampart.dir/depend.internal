@@ -389,9 +389,12 @@ CMakeFiles/rampart.dir/src/GunsManager.cpp.o
  /usr/local/include/SFML/Window/WindowHandle.hpp
  /usr/local/include/SFML/Window/WindowStyle.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o
+ /home/gcretin/Bureau/Rampart/src/AbstractDynamicEntity.h
+ /home/gcretin/Bureau/Rampart/src/AbstractEntity.h
  /home/gcretin/Bureau/Rampart/src/MapManager.cpp
  /home/gcretin/Bureau/Rampart/src/MapManager.h
  /home/gcretin/Bureau/Rampart/src/TileMap.h
+ /home/gcretin/Bureau/Rampart/src/Wall.h
  /usr/local/include/SFML/Config.hpp
  /usr/local/include/SFML/Graphics/BlendMode.hpp
  /usr/local/include/SFML/Graphics/Color.hpp
@@ -404,6 +407,7 @@ CMakeFiles/rampart.dir/src/MapManager.cpp.o
  /usr/local/include/SFML/Graphics/RenderStates.hpp
  /usr/local/include/SFML/Graphics/RenderTarget.hpp
  /usr/local/include/SFML/Graphics/RenderWindow.hpp
+ /usr/local/include/SFML/Graphics/Sprite.hpp
  /usr/local/include/SFML/Graphics/Texture.hpp
  /usr/local/include/SFML/Graphics/Transform.hpp
  /usr/local/include/SFML/Graphics/Transformable.hpp

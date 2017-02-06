@@ -388,9 +388,12 @@ CMakeFiles/rampart.dir/src/GunsManager.cpp.o: /usr/local/include/SFML/Window/Win
 CMakeFiles/rampart.dir/src/GunsManager.cpp.o: /usr/local/include/SFML/Window/WindowHandle.hpp
 CMakeFiles/rampart.dir/src/GunsManager.cpp.o: /usr/local/include/SFML/Window/WindowStyle.hpp
 
+CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/AbstractDynamicEntity.h
+CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/AbstractEntity.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/MapManager.cpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/MapManager.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/TileMap.h
+CMakeFiles/rampart.dir/src/MapManager.cpp.o: src/Wall.h
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Config.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/BlendMode.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/Color.hpp
@@ -403,6 +406,7 @@ CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/Re
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/RenderStates.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/RenderTarget.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/RenderWindow.hpp
+CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/Sprite.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/Texture.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/Transform.hpp
 CMakeFiles/rampart.dir/src/MapManager.cpp.o: /usr/local/include/SFML/Graphics/Transformable.hpp

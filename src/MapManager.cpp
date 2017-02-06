@@ -73,3 +73,58 @@ void MapManager::drawMap(sf::RenderWindow & window, size_t frameCount)
 	else if(frameCount%60>=30 && frameCount%60<45)
 		window.draw(map3);
 }
+
+
+sf::Vector2u MapManager::getCastlePosition(){
+	for (size_t i = 0; i < mapSize.x; ++i)
+	{
+		for (int j = 0; j < mapSize.y; ++j)
+		{
+			if (tiles.at(j*mapSize.x+i)==2)
+			{
+				return sf::Vector2u((uint)i, (uint)j);
+			}
+		}
+	}
+	return sf::Vector2u((uint)0, (uint)0);
+}
+
+
+
+void MapManager::remplissage(std::vector<Wall> walls, sf::Vector2u position){
+	std::cout << "REMPLISSAGE"  << std::endl;
+	if (isCastle(position))
+	{
+		std::cout << "\tCastle"  << std::endl;
+		remplissage(walls, sf::Vector2u((uint)position.x+1, (uint)position.y));
+        remplissage(walls, sf::Vector2u((uint)position.x-1, (uint)position.y));
+        remplissage(walls, sf::Vector2u((uint)position.x, (uint)position.y+1));
+        remplissage(walls, sf::Vector2u((uint)position.x, (uint)position.y-1));
+	}
+    if (tiles.at(position.y*mapSize.x+position.x) == 1)
+    {
+    	std::cout << "\tHerbe"  << std::endl;
+        if (!wallsHere(walls, sf::Vector2f(position.x*32+16, position.y*32+16)))
+        {
+        	std::cout << "\tPas de Mur"  << std::endl;
+        	//Changer la texture en territoire
+        	tiles.at(position.y*mapSize.x+position.x)=3;
+        	remplissage(walls, sf::Vector2u((uint)position.x+1, (uint)position.y));
+        	remplissage(walls, sf::Vector2u((uint)position.x-1, (uint)position.y));
+        	remplissage(walls, sf::Vector2u((uint)position.x, (uint)position.y+1));
+        	remplissage(walls, sf::Vector2u((uint)position.x, (uint)position.y-1));
+        }
+    }
+}
+
+
+bool MapManager::wallsHere(std::vector<Wall> walls, sf::Vector2f cursor){
+	for (int i = 0; i < walls.size(); ++i)
+    {
+        if ( (int)(walls.at(i).getPos().x/32) == (int)(cursor.x/32) && (int)(walls.at(i).getPos().y/32) == (int)(cursor.y/32))
+        {
+            return true;
+        }
+    }
+    return false;
+}

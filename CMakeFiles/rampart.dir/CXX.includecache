@@ -183,6 +183,12 @@ MapManager.h
 /home/gcretin/Bureau/Rampart/src/MapManager.h
 
 /home/gcretin/Bureau/Rampart/src/MapManager.h
+cstdlib
+-
+iostream
+-
+sstream
+-
 ctime
 -
 SFML/Graphics/RenderWindow.hpp
@@ -191,6 +197,8 @@ SFML/Graphics/Texture.hpp
 -
 TileMap.h
 /home/gcretin/Bureau/Rampart/src/TileMap.h
+Wall.h
+/home/gcretin/Bureau/Rampart/src/Wall.h
 
 /home/gcretin/Bureau/Rampart/src/Ship.cpp
 cmath

@@ -46,15 +46,14 @@ void Engine::drawGame(sf::RenderWindow & window)
 }
 
 bool Engine::addGun(sf::Vector2f cursor) {
-    //TO DO
-	sf::Vector2u coord = cursor2Grid(cursor);
-	if(mapManager.isContructible(coord))
-	{
-		if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor) /*&& territory.inTerritory(cursor)*/)
-		{
-			gunsManager.placeGun(sf::Vector2f(coord.x*32+16, coord.y*32+16));
-		}
-	}
+    sf::Vector2u coord = cursor2Grid(cursor);
+    if(mapManager.inTerritory(coord))
+    {
+        if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor))
+        {
+            gunsManager.placeGun(sf::Vector2f(coord.x*32+16, coord.y*32+16));
+        }
+    }
 }
 
 bool Engine::chooseCastle(sf::Vector2f cursor) {
@@ -81,7 +80,6 @@ void Engine::addShip(sf::Vector2f cursor) {
 		if (!shipsManager.shipsHere(cursor))
 		{
 			shipsManager.placeShip(sf::Vector2f(coord.x*32+16, coord.y*32+16));
-            //territory.calculateTerritory(wallManager.walls, std::vector<Castle> castles);
         }
 	}
 }
@@ -258,6 +256,16 @@ void Engine::generateWall(){
         addWall(sf::Vector2f(xmin*32+16, y*32+16));
         addWall(sf::Vector2f(xmax*32+16, y*32+16));    
     }
+
+    testTerritory();   
+}
+
+void Engine::testTerritory(){
+    //TEST
+    sf::Vector2u castlePosition = mapManager.getCastlePosition();
+    cout << "CASTLEPOSITION : (" << castlePosition.x << ", " << castlePosition.y << ")" << endl;
+    mapManager.remplissage(wallManager.walls, castlePosition);
+    //territory.calculateTerritory(wallManager.walls, castlePosition);
 }
 
 void Engine::setStepPartie(int i){

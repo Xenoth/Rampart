@@ -47,6 +47,8 @@ class Engine
 		int getSizeShips();
 		int getSizeWalls();
 
+		void testTerritory();
+
 		void moveOrShoot();
 	
 		void generateWall();
