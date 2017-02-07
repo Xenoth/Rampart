@@ -32,6 +32,7 @@ void Engine::resetGame(sf::Vector2u mapSize)
     wallManager.clearWalls();
     castlesManager.clearCastles();
     audio.playMusic();
+    territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
     frameCount=0;
 }
 
@@ -271,6 +272,7 @@ void Engine::generateWall(){
         }
         for(int y = ymin+1; y <= ymax-1; y++){
             addWall(sf::Vector2f(xmin*32+16, y*32+16));
+            //TODO
             addWall(sf::Vector2f(xmax*32+16, y*32+16));    
         }
     }
@@ -286,13 +288,22 @@ void Engine::testTerritory(){
         //mapManager.remplissage(wallManager.walls, castlePosition);
         //TODO
         territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+        /*
         cout << "whereIsTerritory 1" << endl;
         territory.whereIsTerritory();
         cout << "Fin whereIsTerritory 1" << endl;
+        */
         territory.calculateTerritory(wallManager.walls, castlePosition, true);
+        cout << "Territory is ok : " << territory.verificationTerritory(wallManager.walls) << endl;
+        if (!territory.verificationTerritory(wallManager.walls))
+        {
+            territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+        }
+        /*
         cout << "whereIsTerritory 2" << endl;
         territory.whereIsTerritory();
         cout << "Fin whereIsTerritory 2" << endl;
+        */
 
     }
 }

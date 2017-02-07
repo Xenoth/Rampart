@@ -21,7 +21,7 @@ public :
     Territory();
 
     void loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize);
-    //void calculateTerritory(std::vector<Wall> walls, std::vector<Castle> castles);
+
     void calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle);
     inline bool inTerritory(sf::Vector2u pos) { return (territory_map.at(pos.y*sizeMap.x+pos.x) == 2);};
 
@@ -29,6 +29,8 @@ public :
     bool wallsHere(std::vector<Wall> walls, sf::Vector2f cursor);
 
     void whereIsTerritory();
+    bool verificationTerritory(std::vector<Wall> walls);
+
 private:
 
     TileMap tileMap;

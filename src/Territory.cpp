@@ -73,3 +73,51 @@ void Territory::whereIsTerritory()
         }
     }
 }
+
+bool Territory::verificationTerritory(std::vector<Wall> walls){
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                //Test Water
+                if (territory_map.at((y-1)*sizeMap.x+x) == 0 || territory_map.at((y+1)*sizeMap.x+x) == 0 || territory_map.at(y*sizeMap.x+(x+1)) == 0 || territory_map.at(y*sizeMap.x+(x-1)) == 0)
+                {
+                    std::cout << "Territory -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Water"<< std::endl;
+                    return false;
+                }
+                //Test Earth
+                if (territory_map.at((y-1)*sizeMap.x+x) == 1)
+                {
+                    if(!wallsHere(walls, sf::Vector2f(x*32+16, (y-1)*32+16))){
+                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
+                        return false;
+                    }
+                }
+                if (territory_map.at((y+1)*sizeMap.x+x) == 1)
+                {
+                    if(!wallsHere(walls, sf::Vector2f(x*32+16, (y+1)*32+16))){
+                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
+                        return false;
+                    }
+                }
+                if (territory_map.at(y*sizeMap.x+(x+1)) == 1)
+                {
+                    if(!wallsHere(walls, sf::Vector2f((x+1)*32+16, y*32+16))){
+                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
+                        return false;
+                    }
+                }
+                if (territory_map.at(y*sizeMap.x+(x-1)) == 1)
+                {
+                    if(!wallsHere(walls, sf::Vector2f((x-1)*32+16, y*32+16))){
+                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
+                        return false;
+                    }
+                }
+            }
+        }
+    }
+    return true;
+}
