@@ -324,7 +324,8 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 SHIPS_GENERATION = 6,
                 FIGHT = 7,
                 REPARATION = 8,
-                END = 9
+                END = 9,
+                PLACE_GUNS = 10
               };
 
     switch(stepPartie)
@@ -569,7 +570,8 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 else
                 {
                     addNbShips(2);
-                    stepPartie = 7;
+                    //stepPartie = 7;
+                    stepPartie = 10;
                     newStep = true;
                 }
             }
@@ -593,6 +595,62 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 newPartieQuestion(window);
             }
             //window.close();
+        }
+        break;
+
+        case PLACE_GUNS:
+        {
+            //TODO
+            if (newStep)
+            {
+                introPartie(window, "place guns during 15 seconds");
+                cout << "PLACE_GUNS" << endl;
+                newStep = false;
+                clock.restart();
+                pauseClock = clock.getElapsedTime();
+                //Test Territoire
+
+                testTerritory();
+                cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+                if (!territory.verificationTerritory(wallManager.walls))
+                {
+                    territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                    territory.drawTerritory(window);
+                    stepPartie = 9;
+                    newStep = true;
+                }
+            }
+            cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
+            
+            if (getSizeShips() != 0)
+            {
+                if((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15)
+                {        
+                    switch(event.type){
+                        case sf::Event::MouseButtonPressed:
+                        {
+                            if (event.mouseButton.button == sf::Mouse::Right) {
+                                addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+                                cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
+                            }
+                        }
+                        break;
+
+                        default:
+                        break;
+                    }
+                }
+                else
+                {
+                    stepPartie = 7;
+                    newStep = true;
+                }
+            }
+            else
+            {
+                stepPartie = 9;
+                newStep = true;
+            }
         }
         break;
 
@@ -836,7 +894,7 @@ void Engine::move()
 
 void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event event)
 {
-    if (stepPartie == 5 || stepPartie == 7 || stepPartie == 8)
+    if (stepPartie == 5 || stepPartie == 7 || stepPartie == 8 || stepPartie == 10)
     {
         std::stringstream texteChrono;
         texteChrono.precision(2);
@@ -873,6 +931,22 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
         {
             //Si pas de territoire => fin
             addNbShips(2);
+            //stepPartie = 7;
+            testTerritory();
+            cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+            if (!territory.verificationTerritory(wallManager.walls))
+            {
+                territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                territory.drawTerritory(window);
+                stepPartie = 9;
+                newStep = true;
+            }
+            stepPartie = 10;
+            newStep = true;
+            switchStepPartie(event, window);
+        }
+        if (stepPartie == 10 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
+        {
             stepPartie = 7;
             newStep = true;
             switchStepPartie(event, window);
