@@ -18,6 +18,7 @@ Engine::Engine()
     stepPartie = 2;
     newStep = false;
     pauseGame = false;
+    countAddGun = 0;
 
     fontAncient.loadFromFile("ressources/ancient_medium.ttf");
     texture.loadFromFile("ressources/black_opacity.png");
@@ -55,8 +56,10 @@ bool Engine::addGun(sf::Vector2f cursor) {
         if (!gunsManager.gunsHere(cursor) && !wallManager.wallsHere(cursor) && !castlesManager.castlesHere(cursor))
         {
             gunsManager.placeGun(sf::Vector2f(coord.x*32+16, coord.y*32+16));
+            return true;
         }
     }
+    return false;
 }
 
 bool Engine::chooseCastle(sf::Vector2f cursor) {
@@ -556,10 +559,6 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                                 addWall(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                                 cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
                             }
-                            if (event.mouseButton.button == sf::Mouse::Right) {
-                                addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
-                                cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
-                            }
                         }
                         break;
 
@@ -601,8 +600,10 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
         case PLACE_GUNS:
         {
             //TODO
+
             if (newStep)
             {
+                countAddGun = 0;
                 introPartie(window, "place guns during 15 seconds");
                 cout << "PLACE_GUNS" << endl;
                 newStep = false;
@@ -624,13 +625,13 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             
             if (getSizeShips() != 0)
             {
-                if((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15)
+                if((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15 && countAddGun < 2)
                 {        
                     switch(event.type){
                         case sf::Event::MouseButtonPressed:
                         {
                             if (event.mouseButton.button == sf::Mouse::Right) {
-                                addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+                                countAddGun += addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                                 cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
                             }
                         }
@@ -644,6 +645,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 {
                     stepPartie = 7;
                     newStep = true;
+                    switchStepPartie(event, window);
                 }
             }
             else

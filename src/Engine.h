@@ -94,6 +94,7 @@ class Engine
 
 		int stepPartie;
 		bool newStep;
+		int countAddGun;
 };
 
 #endif
