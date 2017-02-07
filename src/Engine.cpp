@@ -174,25 +174,21 @@ void Engine::moveOrShoot()
         if (shipsManager.AShipCanShoot(i)) {
             cout << "SHOOT" << endl;
             //Gun or Wall
+            
             size_t wallOrGun = rand()%6;
             if (wallOrGun == 0){
-                //Target = Gun
-            /*    size_t target = (rand() % gunsManager.getSizeGuns());
-                cout << "Target (Gun) : " << target << endl;
-                cout << gunsManager.gunPosition(target).x << ", " << gunsManager.gunPosition(target).y << endl;
-                shipsManager.shoot(i, gunsManager.gunPosition(target));
-            */
                 cout << "Coucou" << endl;
-                shipsManager.shoot(i, gunsManager.gunPosition(rand() % gunsManager.getSizeGuns()));
-            
-
+                if (gunsManager.getSizeGuns() != 0)
+                {
+                    shipsManager.shoot(i, gunsManager.gunPosition(rand() % gunsManager.getSizeGuns()));
+                }
             }else{
-                //Target = Wall
-                //size_t target = (rand() % wallManager.getSizeWalls());
-                //cout << "Target (Wall) : " << target << endl;
-                //cout << wallManager.wallPosition(target).x << ", " << wallManager.wallPosition(target).y << endl;
-                shipsManager.shoot(i, wallManager.wallPosition(rand() % wallManager.getSizeWalls()));
+                if (wallManager.getSizeWalls() != 0)
+                {
+                    shipsManager.shoot(i, wallManager.wallPosition(rand() % wallManager.getSizeWalls()));
+                }
             }
+            //shipsManager.shoot(i, wallManager.wallPosition(rand() % wallManager.getSizeWalls()));
         } else {
             sf::Vector2f shipPos = shipsManager.getPositionShip(i);
             
