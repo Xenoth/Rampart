@@ -285,14 +285,7 @@ void Engine::testTerritory(){
     {
         sf::Vector2u castlePosition = cursor2Grid(castlesManager.getPositionCastle(i));
         cout << "CASTLEPOSITION : (" << castlePosition.x << ", " << castlePosition.y << ")" << endl;
-        //mapManager.remplissage(wallManager.walls, castlePosition);
-        //TODO
         territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
-        /*
-        cout << "whereIsTerritory 1" << endl;
-        territory.whereIsTerritory();
-        cout << "Fin whereIsTerritory 1" << endl;
-        */
         territory.calculateTerritory(wallManager.walls, castlePosition, true);
         cout << "Territory is ok : " << territory.verificationTerritory(wallManager.walls) << endl;
         if (!territory.verificationTerritory(wallManager.walls))
@@ -457,6 +450,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 pauseClock = clock.getElapsedTime();
             }
             addShips();
+            shipsManager.drawShips(window);
             stepPartie = 7;
             newStep = true;
         }
@@ -471,6 +465,20 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
+                //Test Territoire
+
+                testTerritory();
+                cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+                if (!territory.verificationTerritory(wallManager.walls))
+                {
+                    territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                    territory.drawTerritory(window);
+                    stepPartie = 9;
+                    newStep = true;
+                }
+                   
+
+
             }
             cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
 
