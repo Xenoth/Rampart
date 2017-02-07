@@ -75,12 +75,14 @@ void Territory::whereIsTerritory()
 }
 
 bool Territory::verificationTerritory(std::vector<Wall> walls){
+    int count = 0;
     for (int x = 0; x < sizeMap.x; ++x)
     {
         for (int y = 0; y < sizeMap.y; ++y)
         {
             if (territory_map.at(y*sizeMap.x+x) == 2)
             {
+                count++;
                 //Test Water
                 if (territory_map.at((y-1)*sizeMap.x+x) == 0 || territory_map.at((y+1)*sizeMap.x+x) == 0 || territory_map.at(y*sizeMap.x+(x+1)) == 0 || territory_map.at(y*sizeMap.x+(x-1)) == 0)
                 {
@@ -118,6 +120,11 @@ bool Territory::verificationTerritory(std::vector<Wall> walls){
                 }
             }
         }
+    }
+    std::cout << "Count : " << count << std::endl;
+    if (count == 0)
+    {
+        return false;
     }
     return true;
 }

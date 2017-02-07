@@ -174,19 +174,24 @@ void Engine::moveOrShoot()
         if (shipsManager.AShipCanShoot(i)) {
             cout << "SHOOT" << endl;
             //Gun or Wall
-            size_t wallOrGun = rand()%4;
+            size_t wallOrGun = rand()%6;
             if (wallOrGun == 0){
                 //Target = Gun
-                size_t target = (rand() % gunsManager.getSizeGuns());
+            /*    size_t target = (rand() % gunsManager.getSizeGuns());
                 cout << "Target (Gun) : " << target << endl;
                 cout << gunsManager.gunPosition(target).x << ", " << gunsManager.gunPosition(target).y << endl;
                 shipsManager.shoot(i, gunsManager.gunPosition(target));
+            */
+                cout << "Coucou" << endl;
+                shipsManager.shoot(i, gunsManager.gunPosition(rand() % gunsManager.getSizeGuns()));
+            
+
             }else{
                 //Target = Wall
-                size_t target = (rand() % wallManager.getSizeWalls());
-                cout << "Target (Wall) : " << target << endl;
-                cout << wallManager.wallPosition(target).x << ", " << wallManager.wallPosition(target).y << endl;
-                shipsManager.shoot(i, wallManager.wallPosition(target));
+                //size_t target = (rand() % wallManager.getSizeWalls());
+                //cout << "Target (Wall) : " << target << endl;
+                //cout << wallManager.wallPosition(target).x << ", " << wallManager.wallPosition(target).y << endl;
+                shipsManager.shoot(i, wallManager.wallPosition(rand() % wallManager.getSizeWalls()));
             }
         } else {
             sf::Vector2f shipPos = shipsManager.getPositionShip(i);
@@ -396,6 +401,18 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             drawGame(window);
             stepPartie = 5;
             newStep = true;
+            /*testTerritory()
+            if (territory.verificationTerritory(wallManager.walls))
+            */
+            testTerritory();
+            cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+            if (!territory.verificationTerritory(wallManager.walls))
+            {
+                territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                territory.drawTerritory(window);
+                stepPartie = 9;
+                newStep = true;
+            }
         }
         break;
 
@@ -525,6 +542,9 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
+                //TODO
+                testTerritory();
+                territory.drawTerritory(window);
             }
             cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
             
@@ -833,14 +853,8 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
         
         if (stepPartie == 5 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
         {
-            if (getSizeGuns() == 0)
-            {
-                stepPartie = 9;
-                newStep = true;
-            }else{
-                stepPartie = 6;
-                newStep = true;
-            }
+            stepPartie = 6;
+            newStep = true;
             switchStepPartie(event, window);
         }
         if (stepPartie == 7 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
