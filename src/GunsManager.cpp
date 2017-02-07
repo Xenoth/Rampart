@@ -75,7 +75,8 @@ void GunsManager::notifyExplosion(void *from, sf::Vector2f pos, bool faction)
 	else
 		for(size_t i = 0; i < guns.size(); i++)
 		{
-			if(guns.at(i).getPos()==pos){
+			if(!(guns.at(i).getPos().x<=pos.x-31|| guns.at(i).getPos().y<=pos.y-31 || guns.at(i).getPos().x>=pos.x+31 || guns.at(i).getPos().y>=pos.y+31))
+            {
 				guns.erase(guns.begin()+i);
 				return;
 			}

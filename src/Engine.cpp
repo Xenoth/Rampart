@@ -13,6 +13,7 @@ Engine::Engine()
     bulletsManager.addExploser2Bullets(&gunsManager);
     bulletsManager.addExploser2Bullets(&shipsManager);
     bulletsManager.addExploser2Bullets(&audio);
+    bulletsManager.addExploser2Bullets(&wallManager);
 
     stepPartie = 2;
     newStep = false;
