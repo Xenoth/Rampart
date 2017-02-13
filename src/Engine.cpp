@@ -18,7 +18,6 @@ Engine::Engine()
     stepPartie = 2;
     newStep = false;
     pauseGame = false;
-    countAddGun = 0;
 
     fontAncient.loadFromFile("ressources/ancient_medium.ttf");
     texture.loadFromFile("ressources/black_opacity.png");
@@ -176,22 +175,26 @@ void Engine::moveOrShoot()
 
         if (shipsManager.AShipCanShoot(i)) {
             cout << "SHOOT" << endl;
-            //Gun or Wall
-            
-            size_t wallOrGun = rand()%6;
-            if (wallOrGun == 0){
-                cout << "Coucou" << endl;
-                if (gunsManager.getSizeGuns() != 0)
-                {
-                    shipsManager.shoot(i, gunsManager.gunPosition(rand() % gunsManager.getSizeGuns()));
-                }
-            }else{
-                if (wallManager.getSizeWalls() != 0)
+            //Territory or Wall
+            sf::Vector2f cursor = sf::Vector2f(rand()%769, rand()%769);
+            cout << "1" << endl;
+            sf::Vector2u coord = cursor2Grid(cursor);
+            cout << "2" << endl;
+            /*
+            if (wallManager.getSizeWalls() != 0)
                 {
                     shipsManager.shoot(i, wallManager.wallPosition(rand() % wallManager.getSizeWalls()));
                 }
+            */
+            while(!territory.inTerritory(coord) && !wallManager.wallsHere(cursor)){
+                cout << "3" << endl;
+                cursor = sf::Vector2f(rand()%769, rand()%769);
+                cout << "4" << endl;
+                coord = cursor2Grid(cursor);
+                cout << "5" << endl;
             }
-            //shipsManager.shoot(i, wallManager.wallPosition(rand() % wallManager.getSizeWalls()));
+            cout << "fin" << endl;
+            shipsManager.shoot(i, cursor/*sf::Vector2f(coord.x*32+16, coord.y*32+16)*/);
         } else {
             sf::Vector2f shipPos = shipsManager.getPositionShip(i);
             
@@ -222,16 +225,16 @@ void Engine::moveOrShoot()
 
 
             if(shipPos.x < shipsManager.getDestination(i).x){
-                shipPos.x = shipPos.x + 1;
+                shipPos.x = shipPos.x + 0.5;
             }
             if(shipPos.x > shipsManager.getDestination(i).x){
-                shipPos.x = shipPos.x - 1;
+                shipPos.x = shipPos.x - 0.5;
             }
             if(shipPos.y < shipsManager.getDestination(i).y){
-                shipPos.y = shipPos.y + 1;
+                shipPos.y = shipPos.y + 0.5;
             }
             if(shipPos.y > shipsManager.getDestination(i).y){
-                shipPos.y = shipPos.y - 1;
+                shipPos.y = shipPos.y - 0.5;
             }
 
 
@@ -603,7 +606,6 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
 
             if (newStep)
             {
-                countAddGun = 0;
                 introPartie(window, "place guns during 15 seconds");
                 cout << "PLACE_GUNS" << endl;
                 newStep = false;
@@ -625,13 +627,13 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             
             if (getSizeShips() != 0)
             {
-                if((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15 && countAddGun < 2)
+                if((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15 && gunsManager.getSizeGuns() < castlesManager.getSizeCastles()*3)
                 {        
                     switch(event.type){
                         case sf::Event::MouseButtonPressed:
                         {
                             if (event.mouseButton.button == sf::Mouse::Right) {
-                                countAddGun += addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
+                                addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                                 cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
                             }
                         }
