@@ -12,17 +12,24 @@ void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize){
     for (size_t i = 0; i < tiles.size(); i++){
         if(tiles.at(i) != 0){
             territory_map.push_back(1);
-        } else
+            backup_territory_map.push_back(1);
+        } else{
             territory_map.push_back(0);
+            backup_territory_map.push_back(0);
+        }
     }
 
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 
 }
 
+void Territory::updateTileMap(){
+    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
+}
+
 
 void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle){
-    std::cout << "REMPLISSAGE"  << std::endl;
+    //std::cout << "REMPLISSAGE"  << std::endl;
     if (isCastle)
     {
         std::cout << "\tCastle"  << std::endl;
@@ -33,10 +40,10 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
     }
     if (territory_map.at(castlePosition.y*sizeMap.x+castlePosition.x) == 1)
     {
-        std::cout << "\tHerbe"  << std::endl;
+        //std::cout << "\tHerbe"  << std::endl;
         if (!wallsHere(walls, sf::Vector2f(castlePosition.x*32+16, castlePosition.y*32+16)))
         {
-            std::cout << "\tPas de Mur"  << std::endl;
+            //std::cout << "\tPas de Mur"  << std::endl;
             territory_map.at(castlePosition.y*sizeMap.x+castlePosition.x)=2;
             calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x+1, (uint)castlePosition.y), false);
             calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x-1, (uint)castlePosition.y), false);
@@ -127,4 +134,50 @@ bool Territory::verificationTerritory(std::vector<Wall> walls){
         return false;
     }
     return true;
+}
+
+
+void Territory::makeBackUp(){
+    /*for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (territory_map.at(y*sizeMap.x+x) == 0)
+            {
+                backup_territory_map.at(y*sizeMap.x+x) = 0;
+            }
+            if (territory_map.at(y*sizeMap.x+x) == 1)
+            {
+                backup_territory_map.at(y*sizeMap.x+x) = 1;
+            }
+            if (territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                backup_territory_map.at(y*sizeMap.x+x) = 2;
+            }
+        }
+    }*/
+
+    backup_territory_map = territory_map;
+}
+
+void Territory::useBackUp(){
+    /*for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 0)
+            {
+                territory_map.at(y*sizeMap.x+x) = 0;
+            }
+            if (backup_territory_map.at(y*sizeMap.x+x) == 1)
+            {
+                territory_map.at(y*sizeMap.x+x) = 1;
+            }
+            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                territory_map.at(y*sizeMap.x+x) = 2;
+            }
+        }
+    }*/
+    territory_map = backup_territory_map;
 }

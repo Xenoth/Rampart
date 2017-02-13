@@ -289,23 +289,31 @@ void Engine::generateWall(){
 }
 
 void Engine::testTerritory(){
-    for (int i = 0; i < castlesManager.getSizeCastles(); ++i)
+    territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+    for (int x = 0; x < 24; ++x)
     {
-        sf::Vector2u castlePosition = cursor2Grid(castlesManager.getPositionCastle(i));
-        cout << "CASTLEPOSITION : (" << castlePosition.x << ", " << castlePosition.y << ")" << endl;
-        territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
-        territory.calculateTerritory(wallManager.walls, castlePosition, true);
-        cout << "Territory is ok : " << territory.verificationTerritory(wallManager.walls) << endl;
-        if (!territory.verificationTerritory(wallManager.walls))
+        for (int y = 0; y < 24; ++y)
         {
-            territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+            if (mapManager.isConstructibleCastle(sf::Vector2u(x, y)))
+            {
+                cout<< "Castle : " << x << ", " << y << endl;
+                sf::Vector2u castlePosition = sf::Vector2u(x, y);
+                territory.makeBackUp();
+                territory.calculateTerritory(wallManager.walls, castlePosition, true);
+                cout << "Territory is ok : " << territory.verificationTerritory(wallManager.walls) << endl;
+                if (!territory.verificationTerritory(wallManager.walls))
+                {
+                    cout << "\tFalse" << endl;
+                    territory.useBackUp();
+                    territory.updateTileMap();
+                }else{
+                    cout << "\tTrue" << endl;
+                    if(!castlesManager.castlesHere(sf::Vector2f(x*32+16, y*32+16))){
+                        castlesManager.placeCastle(sf::Vector2f(x*32+16, y*32+16));
+                    }
+                }
+            }
         }
-        /*
-        cout << "whereIsTerritory 2" << endl;
-        territory.whereIsTerritory();
-        cout << "Fin whereIsTerritory 2" << endl;
-        */
-
     }
 }
 
@@ -402,12 +410,10 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             }
             generateWall();
             drawGame(window);
+            cout << "***************************" << endl;
             stepPartie = 5;
             newStep = true;
-            /*testTerritory()
-            if (territory.verificationTerritory(wallManager.walls))
-            */
-            testTerritory();
+            //testTerritory();
             cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
             if (!territory.verificationTerritory(wallManager.walls))
             {
@@ -944,6 +950,7 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
                 territory.drawTerritory(window);
                 stepPartie = 9;
                 newStep = true;
+                switchStepPartie(event, window);
             }
             stepPartie = 10;
             newStep = true;
