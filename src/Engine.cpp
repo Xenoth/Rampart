@@ -306,6 +306,7 @@ void Engine::testTerritory(){
                     cout << "\tFalse" << endl;
                     territory.useBackUp();
                     territory.updateTileMap();
+                    castlesManager.deleteCastle(sf::Vector2f(x*32+16, y*32+16));
                 }else{
                     cout << "\tTrue" << endl;
                     if(!castlesManager.castlesHere(sf::Vector2f(x*32+16, y*32+16))){
