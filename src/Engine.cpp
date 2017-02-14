@@ -410,11 +410,13 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 pauseClock = clock.getElapsedTime();
             }
             generateWall();
-            drawGame(window);
+            
             cout << "***************************" << endl;
             stepPartie = 5;
             newStep = true;
             //testTerritory();
+            territory.calculateNoTerritory(wallManager.walls);
+            drawGame(window);
             cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
             if (!territory.verificationTerritory(wallManager.walls))
             {
@@ -495,7 +497,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 pauseClock = clock.getElapsedTime();
                 //Test Territoire
 
-                testTerritory();
+                //testTerritory();
                 cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
                 if (!territory.verificationTerritory(wallManager.walls))
                 {
@@ -578,10 +580,54 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 }
                 else
                 {
+                    /*addNbShips(2);
+                        territory.calculateNoTerritory(wallManager.walls);
+                        drawGame(window);
+                    if (!territory.verificationTerritory(wallManager.walls))
+                    {
+                        territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                        territory.drawTerritory(window);
+                        stepPartie = 9;
+                        newStep = true;
+                        switchStepPartie(event, window);
+                    }
+                    if (castlesManager.getSizeCastles() == 0)
+                    {
+                        stepPartie = 9;
+                        newStep = true;
+                    }else{
+                        stepPartie = 10;
+                        newStep = true;
+                    }*/
+                        
+                    //Si pas de territoire => fin
                     addNbShips(2);
                     //stepPartie = 7;
+                    testTerritory();
+                            territory.calculateNoTerritory(wallManager.walls);
+                            drawGame(window);
+                    cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+                    if (!territory.verificationTerritory(wallManager.walls))
+                    {
+                        territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                        territory.drawTerritory(window);
+                        stepPartie = 9;
+                        newStep = true;
+                        switchStepPartie(event, window);
+                    }
+                    if (castlesManager.getSizeCastles() == 0)
+                    {
+                        stepPartie = 9;
+                        newStep = true;
+                        switchStepPartie(event, window);
+                    }
                     stepPartie = 10;
                     newStep = true;
+                    switchStepPartie(event, window);
+
+
+
+
                 }
             }
             else
@@ -620,7 +666,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 pauseClock = clock.getElapsedTime();
                 //Test Territoire
 
-                testTerritory();
+                //testTerritory();
                 cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
                 if (!territory.verificationTerritory(wallManager.walls))
                 {
@@ -944,11 +990,19 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
             addNbShips(2);
             //stepPartie = 7;
             testTerritory();
+                    territory.calculateNoTerritory(wallManager.walls);
+                    drawGame(window);
             cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
             if (!territory.verificationTerritory(wallManager.walls))
             {
                 territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
                 territory.drawTerritory(window);
+                stepPartie = 9;
+                newStep = true;
+                switchStepPartie(event, window);
+            }
+            if (castlesManager.getSizeCastles() == 0)
+            {
                 stepPartie = 9;
                 newStep = true;
                 switchStepPartie(event, window);

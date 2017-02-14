@@ -54,6 +54,98 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
+void Territory::calculateNoTerritory(std::vector<Wall> walls){
+    //TO DO
+    std::cout << "\tSET WALLS" << std::endl;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (wallsHere(walls, sf::Vector2f(x*32+16, y*32+16)))
+            {
+                territory_map.at(y*sizeMap.x+x) = 4;
+            }  
+        }
+    }
+
+
+
+    std::cout << "\tCALCULATE NO TERRITORY" << std::endl;
+    int countUpdate = 1;
+    while(countCaseEmpty()!=0 && countUpdate!=0){
+        countUpdate = 0;
+        for (int x = 0; x < sizeMap.x; ++x)
+        {
+            for (int y = 0; y < sizeMap.y; ++y)
+            {
+                if (!wallsHere(walls, sf::Vector2f(x*32+16, y*32+16)) && territory_map.at(y*sizeMap.x+x) == 1)
+                {
+                    if (territory_map.at((y-1)*sizeMap.x+x) == 0 
+                    || territory_map.at((y+1)*sizeMap.x+x) == 0 
+                    || territory_map.at(y*sizeMap.x+(x+1)) == 0 
+                    || territory_map.at(y*sizeMap.x+(x-1)) == 0
+                    || territory_map.at((y-1)*sizeMap.x+x) == 3 
+                    || territory_map.at((y+1)*sizeMap.x+x) == 3 
+                    || territory_map.at(y*sizeMap.x+(x+1)) == 3 
+                    || territory_map.at(y*sizeMap.x+(x-1)) == 3)
+                    {
+                        territory_map.at(y*sizeMap.x+x) = 3;
+                        countUpdate++;
+                        //std::cout << "Territory -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Water or 3"<< std::endl;
+                    } 
+                }  
+            }
+        }
+        std::cout << "countUpdate : " << countUpdate << std::endl;
+    }
+
+    //
+
+    std::cout << "\tSET TERRITORY" << std::endl;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (territory_map.at(y*sizeMap.x+x) == 1)
+            {
+                std::cout << "Territory -> x,y : " << x << ", " << y << std::endl;
+                territory_map.at(y*sizeMap.x+x) = 2;
+            }  
+        }
+    }
+
+
+    //Nb Walls
+    std::cout << "\tNB WALLS" << std::endl;
+    int nbWalls = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (wallsHere(walls, sf::Vector2f(x*32+16, y*32+16)) && territory_map.at(y*sizeMap.x+x)==4)
+            {
+                nbWalls++;
+            }
+        }
+    }
+    std::cout << "NB WALLS : " << nbWalls << std::endl;
+    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
+}
+
+int Territory::countCaseEmpty(){
+    int countEmpty = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (territory_map.at(y*sizeMap.x+x)==1){
+                countEmpty++;
+            }
+        }
+    }
+    std::cout << "NB EMPTY : " << countEmpty << std::endl;
+    return countEmpty;
+}
 
 bool Territory::wallsHere(std::vector<Wall> walls, sf::Vector2f cursor){
     for (int i = 0; i < walls.size(); ++i)
@@ -138,46 +230,9 @@ bool Territory::verificationTerritory(std::vector<Wall> walls){
 
 
 void Territory::makeBackUp(){
-    /*for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (territory_map.at(y*sizeMap.x+x) == 0)
-            {
-                backup_territory_map.at(y*sizeMap.x+x) = 0;
-            }
-            if (territory_map.at(y*sizeMap.x+x) == 1)
-            {
-                backup_territory_map.at(y*sizeMap.x+x) = 1;
-            }
-            if (territory_map.at(y*sizeMap.x+x) == 2)
-            {
-                backup_territory_map.at(y*sizeMap.x+x) = 2;
-            }
-        }
-    }*/
-
     backup_territory_map = territory_map;
 }
 
 void Territory::useBackUp(){
-    /*for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (backup_territory_map.at(y*sizeMap.x+x) == 0)
-            {
-                territory_map.at(y*sizeMap.x+x) = 0;
-            }
-            if (backup_territory_map.at(y*sizeMap.x+x) == 1)
-            {
-                territory_map.at(y*sizeMap.x+x) = 1;
-            }
-            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
-            {
-                territory_map.at(y*sizeMap.x+x) = 2;
-            }
-        }
-    }*/
     territory_map = backup_territory_map;
 }

@@ -25,7 +25,9 @@ public :
     void updateTileMap();
 
     void calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle);
+    void calculateNoTerritory(std::vector<Wall> walls);
     inline bool inTerritory(sf::Vector2u pos) { return (territory_map.at(pos.y*sizeMap.x+pos.x) == 2);};
+    int countCaseEmpty();
 
     inline void drawTerritory(sf::RenderWindow & window) { window.draw(tileMap); };
     bool wallsHere(std::vector<Wall> walls, sf::Vector2f cursor);
@@ -41,7 +43,7 @@ private:
     TileMap tileMap;
     sf::Vector2u sizeMap;
 
-    //0 = water, 1 = empty, 2 = Walls
+    //0 = water, 1 = empty, 2 = Territory, 3 = can't be a Territory, 4 = Wall
     std::vector<uint8_t> territory_map;
 
     std::vector<uint8_t> backup_territory_map;
