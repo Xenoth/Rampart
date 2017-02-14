@@ -1059,7 +1059,6 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
                         window.close();
                         return;
                     }
-                    //PB HERE
                     else if (event.key.code == sf::Keyboard::O || event.key.code == sf::Keyboard::Space)
                     {
                         window.clear(sf::Color(255,255,255,255));
