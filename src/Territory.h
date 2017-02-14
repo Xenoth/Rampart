@@ -38,6 +38,9 @@ public :
     void makeBackUp();
     void useBackUp();
 
+    void territorySideBySide(sf::Vector2u position);
+    bool isARealTerritory(std::vector<Castle> castles, std::vector<Wall> walls);
+
 private:
 
     TileMap tileMap;

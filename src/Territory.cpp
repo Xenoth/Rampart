@@ -26,6 +26,7 @@ void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize){
 void Territory::updateTileMap(){
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
+
 //sideBySide
 
 void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle){
@@ -53,6 +54,119 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
     }
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
+
+
+
+
+void Territory::territorySideBySide(sf::Vector2u position){
+    if (backup_territory_map.at(position.y*sizeMap.x+position.x) == 2)
+    {
+        backup_territory_map.at(position.y*sizeMap.x+position.x)=9;
+        territorySideBySide(sf::Vector2u((uint)position.x+1, (uint)position.y));
+        territorySideBySide(sf::Vector2u((uint)position.x-1, (uint)position.y));
+        territorySideBySide(sf::Vector2u((uint)position.x, (uint)position.y+1));
+        territorySideBySide(sf::Vector2u((uint)position.x, (uint)position.y-1));
+    }
+}
+
+bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> walls){
+    makeBackUp();
+
+    //cursor2Grid(castlesManager.getPositionCastle(0));
+
+    //Nb Walls
+    std::cout << "\tNB WALLS" << std::endl;
+    int nbWalls = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (wallsHere(walls, sf::Vector2f(x*32+16, y*32+16)) && backup_territory_map.at(y*sizeMap.x+x)==4)
+            {
+                backup_territory_map.at(y*sizeMap.x+x)=2;
+                nbWalls++;
+            }
+        }
+    }
+    std::cout << "NB WALLS : " << nbWalls << std::endl;
+
+    nbWalls = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (wallsHere(walls, sf::Vector2f(x*32+16, y*32+16)) && backup_territory_map.at(y*sizeMap.x+x)==4)
+            {
+                backup_territory_map.at(y*sizeMap.x+x)=2;
+                nbWalls++;
+            }
+        }
+    }
+    std::cout << "NB WALLS : " << nbWalls << std::endl;
+
+    //PB
+    for (int i = 0; i < castles.size(); ++i)
+    {
+        //sf::Vector2u((uint)cursor.x/32, (uint)cursor.y/32)
+        //territorySideBySide(cursor2Grid(castles.at(i).getPos()));
+        territorySideBySide(sf::Vector2u((uint)castles.at(i).getPos().x/32, (uint)castles.at(i).getPos().y/32));
+    }
+    //territorySideBySide(position);
+    
+    //Afficher nb 9 et 2
+    std::cout << "\tNB 2?" << std::endl;
+    int count = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                count++;
+            }  
+        }
+    }
+    std::cout << count << std::endl;
+
+    //Afficher nb 9 et 2
+    std::cout << "\tNB 9?" << std::endl;
+    count = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
+            {
+                count++;
+            }  
+        }
+    }
+    std::cout << count << std::endl;
+
+
+
+
+    std::cout << "\t2?" << std::endl;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                std::cout << "\tFalse" << std::endl;
+                makeBackUp();
+                return false;
+            }  
+        }
+    }
+    std::cout << "\tTrue" << std::endl;
+    makeBackUp();
+    return true;
+}
+
+
+
+
 
 void Territory::calculateNoTerritory(std::vector<Wall> walls){
     //TO DO

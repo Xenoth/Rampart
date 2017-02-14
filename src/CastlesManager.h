@@ -24,6 +24,8 @@ public:
     bool castlesHere(sf::Vector2f cursor);
     void deleteCastle(sf::Vector2f cursor);
 
+    
+
     std::vector<Castle> castles;
 
 private:

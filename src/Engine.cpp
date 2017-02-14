@@ -580,26 +580,6 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 }
                 else
                 {
-                    /*addNbShips(2);
-                        territory.calculateNoTerritory(wallManager.walls);
-                        drawGame(window);
-                    if (!territory.verificationTerritory(wallManager.walls))
-                    {
-                        territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
-                        territory.drawTerritory(window);
-                        stepPartie = 9;
-                        newStep = true;
-                        switchStepPartie(event, window);
-                    }
-                    if (castlesManager.getSizeCastles() == 0)
-                    {
-                        stepPartie = 9;
-                        newStep = true;
-                    }else{
-                        stepPartie = 10;
-                        newStep = true;
-                    }*/
-
                     //Si pas de territoire => fin
                     addNbShips(2);
                     //stepPartie = 7;
@@ -616,6 +596,13 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                         switchStepPartie(event, window);
                     }
                     if (castlesManager.getSizeCastles() == 0)
+                    {
+                        stepPartie = 9;
+                        newStep = true;
+                        switchStepPartie(event, window);
+                    }
+                    //TO DO
+                    if (!territory.isARealTerritory(castlesManager.castles, wallManager.walls))
                     {
                         stepPartie = 9;
                         newStep = true;
@@ -1016,6 +1003,14 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
                 newStep = true;
                 switchStepPartie(event, window);
             }
+            cout << "COUCOU" << endl;
+            //PB HERE
+            if (!territory.isARealTerritory(castlesManager.castles, wallManager.walls))
+            {
+                stepPartie = 9;
+                newStep = true;
+                switchStepPartie(event, window);
+            }
             stepPartie = 10;
             newStep = true;
             switchStepPartie(event, window);
@@ -1064,6 +1059,7 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
                         window.close();
                         return;
                     }
+                    //PB HERE
                     else if (event.key.code == sf::Keyboard::O || event.key.code == sf::Keyboard::Space)
                     {
                         window.clear(sf::Color(255,255,255,255));
