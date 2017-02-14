@@ -26,7 +26,7 @@ void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize){
 void Territory::updateTileMap(){
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
-
+//sideBySide
 
 void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle){
     //std::cout << "REMPLISSAGE"  << std::endl;

@@ -29,7 +29,6 @@ int main(int argc, char* argv[])
 		while (window.pollEvent(event))
 		{
             engine.switchStepPartie(event, window);
-
             switch(event.type){
                 case sf::Event::Closed:
                 {
@@ -60,7 +59,7 @@ int main(int argc, char* argv[])
             }
         }
 
-        if(engine.pauseGame)
+        if(engine.pauseGame && window.isOpen())
         {
             engine.pauseClock = engine.clock.getElapsedTime() + engine.pauseClock;
             cout << " PAUSE CLOCK : " << engine.pauseClock.asSeconds() << endl;

@@ -599,7 +599,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                         stepPartie = 10;
                         newStep = true;
                     }*/
-                        
+
                     //Si pas de territoire => fin
                     addNbShips(2);
                     //stepPartie = 7;
@@ -685,7 +685,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                     switch(event.type){
                         case sf::Event::MouseButtonPressed:
                         {
-                            if (event.mouseButton.button == sf::Mouse::Right) {
+                            if (event.mouseButton.button == sf::Mouse::Left) {
                                 addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                                 cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
                             }
@@ -749,6 +749,7 @@ void Engine::introPartie(sf::RenderWindow &window, char *texte){
                 case sf::Event::Closed:
                 {
                     window.close();
+                    return;
                 }
                 break;
 
@@ -761,6 +762,7 @@ void Engine::introPartie(sf::RenderWindow &window, char *texte){
                     }
                     else if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
+                        return;
                     }
                     else if (event.key.code == sf::Keyboard::Space)
                     {
@@ -806,6 +808,7 @@ void Engine::pause_game(sf::RenderWindow &window){
                 case sf::Event::Closed:
                 {
                     window.close();
+                    return;
                 }
                 break;
 
@@ -818,11 +821,15 @@ void Engine::pause_game(sf::RenderWindow &window){
                     }
                     else if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
+                        return;
                     }
                     else if (event.key.code == sf::Keyboard::Space)
                     {
+                        window.clear(sf::Color(255,255,255,255));
+                        drawGame(window);
                         setStepPartie(2);
                         switchStepPartie(event, window);
+                        return;
                     }
                 }
                 break;
@@ -922,6 +929,7 @@ void Engine::game_intro(sf::RenderWindow &window){
                 case sf::Event::Closed:
                 {
                     window.close();
+                    return;
                 }
                 break;
 
@@ -932,6 +940,7 @@ void Engine::game_intro(sf::RenderWindow &window){
                     }
                     else if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
+                        return;
                     }
                 }
                 break;
@@ -1045,27 +1054,28 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
                 case sf::Event::Closed:
                 {
                     window.close();
+                    return;
                 }
                 break;
 
                 case sf::Event::KeyPressed:
                 {
-                    if (event.key.code == sf::Keyboard::Return){
-                        window.clear(sf::Color(255,255,255,255));
-                        drawGame(window);
-                        return;
-                    }
-                    else if (event.key.code == sf::Keyboard::Escape) {
+                    if (event.key.code == sf::Keyboard::Escape) {
                         window.close();
+                        return;
                     }
                     else if (event.key.code == sf::Keyboard::O || event.key.code == sf::Keyboard::Space)
                     {
+                        window.clear(sf::Color(255,255,255,255));
+                        drawGame(window);
                         setStepPartie(2);
                         switchStepPartie(event, window);
+                        return;
                     }
                     else if (event.key.code == sf::Keyboard::N)
                     {
                         window.close();
+                        return;
                     }
                 }
                 break;
