@@ -498,6 +498,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 //Test Territoire
 
                 //testTerritory();
+                /*
                 cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
                 if (!territory.verificationTerritory(wallManager.walls))
                 {
@@ -505,7 +506,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                     territory.drawTerritory(window);
                     stepPartie = 9;
                     newStep = true;
-                }
+                }*/
                    
 
 
@@ -602,12 +603,22 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                         switchStepPartie(event, window);
                     }
                     //TO DO
+                    /*
                     if (!territory.isARealTerritory(castlesManager.castles, wallManager.walls))
                     {
+                        //TO DO Prendre le vrai territoire
+                        cout << "test" << endl;
+                        
+                        territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                        territory.drawTerritory(window);
                         stepPartie = 9;
                         newStep = true;
                         switchStepPartie(event, window);
-                    }
+                    }*/
+
+                    territory.isARealTerritory(castlesManager.castles, wallManager.walls);
+                    drawGame(window);
+
                     stepPartie = 10;
                     newStep = true;
                     switchStepPartie(event, window);
@@ -654,14 +665,14 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 //Test Territoire
 
                 //testTerritory();
-                cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+                /*cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
                 if (!territory.verificationTerritory(wallManager.walls))
                 {
                     territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
                     territory.drawTerritory(window);
                     stepPartie = 9;
                     newStep = true;
-                }
+                }*/
             }
             cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
             
@@ -1005,12 +1016,20 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
             }
             cout << "COUCOU" << endl;
             //PB HERE
-            if (!territory.isARealTerritory(castlesManager.castles, wallManager.walls))
+            /*if (!territory.isARealTerritory(castlesManager.castles, wallManager.walls))
             {
+                //TO DO Prendre le vrai territoire
+                cout << "test" << endl;
+
+                territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
+                territory.drawTerritory(window);
                 stepPartie = 9;
                 newStep = true;
                 switchStepPartie(event, window);
-            }
+            }*/
+            territory.isARealTerritory(castlesManager.castles, wallManager.walls);
+            
+            drawGame(window);
             stepPartie = 10;
             newStep = true;
             switchStepPartie(event, window);

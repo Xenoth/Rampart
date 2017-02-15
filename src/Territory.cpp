@@ -112,8 +112,30 @@ bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> 
         territorySideBySide(sf::Vector2u((uint)castles.at(i).getPos().x/32, (uint)castles.at(i).getPos().y/32));
     }
     //territorySideBySide(position);
-    
-    //Afficher nb 9 et 2
+
+
+
+
+
+
+
+//Affichage
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                std::cout << x << ", " << y << " -> 2" << std::endl;
+            }
+            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
+            {
+                std::cout << x << ", " << y << " -> 9" << std::endl;
+            } 
+        }
+    }
+
+    //Afficher nb 2
     std::cout << "\tNB 2?" << std::endl;
     int count = 0;
     for (int x = 0; x < sizeMap.x; ++x)
@@ -128,7 +150,7 @@ bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> 
     }
     std::cout << count << std::endl;
 
-    //Afficher nb 9 et 2
+    //Afficher nb 9
     std::cout << "\tNB 9?" << std::endl;
     count = 0;
     for (int x = 0; x < sizeMap.x; ++x)
@@ -142,16 +164,93 @@ bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> 
         }
     }
     std::cout << count << std::endl;
+//Fin Affichage
 
-
-
-
-    std::cout << "\t2?" << std::endl;
+//Inversion
     for (int x = 0; x < sizeMap.x; ++x)
     {
         for (int y = 0; y < sizeMap.y; ++y)
         {
             if (backup_territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                backup_territory_map.at(y*sizeMap.x+x) = 9;
+            }
+            else if (backup_territory_map.at(y*sizeMap.x+x) == 9)
+            {
+                backup_territory_map.at(y*sizeMap.x+x) = 2;
+            } 
+        }
+    }
+
+//Affichage
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                std::cout << x << ", " << y << " -> 2" << std::endl;
+            }
+            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
+            {
+                std::cout << x << ", " << y << " -> 9" << std::endl;
+            } 
+        }
+    }
+
+    //Afficher nb 2
+    std::cout << "\tNB 2?" << std::endl;
+    count = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
+            {
+                count++;
+            }  
+        }
+    }
+    std::cout << count << std::endl;
+
+    //Afficher nb 9
+    std::cout << "\tNB 9?" << std::endl;
+    count = 0;
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
+            {
+                count++;
+            }  
+        }
+    }
+    std::cout << count << std::endl;
+//Fin Affichage
+
+
+
+
+
+
+
+
+
+    useBackUp();
+    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), backup_territory_map, sizeMap);
+
+
+
+
+
+
+    std::cout << "\t9?" << std::endl; // Si un 9 => perdu
+    for (int x = 0; x < sizeMap.x; ++x)
+    {
+        for (int y = 0; y < sizeMap.y; ++y)
+        {
+            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
             {
                 std::cout << "\tFalse" << std::endl;
                 makeBackUp();
