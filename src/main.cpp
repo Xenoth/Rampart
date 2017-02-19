@@ -43,7 +43,6 @@ int main(int argc, char* argv[])
                     }
                     else if (event.key.code == sf::Keyboard::Space)
                     {
-
                         engine.setStepPartie(2);
                         engine.switchStepPartie(event, window);
                     }

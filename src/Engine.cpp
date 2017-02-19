@@ -48,7 +48,8 @@ void Engine::drawGame(sf::RenderWindow & window)
     bulletsManager.drawBullets(window);
 }
 
-bool Engine::addGun(sf::Vector2f cursor) {
+bool Engine::addGun(sf::Vector2f cursor) 
+{
     sf::Vector2u coord = cursor2Grid(cursor);
     if(territory.inTerritory(coord))
     {
@@ -61,7 +62,8 @@ bool Engine::addGun(sf::Vector2f cursor) {
     return false;
 }
 
-bool Engine::chooseCastle(sf::Vector2f cursor) {
+bool Engine::chooseCastle(sf::Vector2f cursor) 
+{
     sf::Vector2u coord = cursor2Grid(cursor);
     bool canConstructCastle = mapManager.isConstructibleCastle(coord);
     if (canConstructCastle)
@@ -71,8 +73,8 @@ bool Engine::chooseCastle(sf::Vector2f cursor) {
     return canConstructCastle;
 }
 
-void Engine::addWall(sf::Vector2f cursor){
-    cout << "(" << cursor.x << ", " << cursor.y << ")" << endl;
+void Engine::addWall(sf::Vector2f cursor)
+{
     sf::Vector2u coord = cursor2Grid(cursor);
     if(mapManager.isContructible(coord))
     {
@@ -83,7 +85,8 @@ void Engine::addWall(sf::Vector2f cursor){
     }
 }
 
-void Engine::addShip(sf::Vector2f cursor) {
+void Engine::addShip(sf::Vector2f cursor) 
+{
     sf::Vector2u coord = cursor2Grid(cursor);
     if(mapManager.isNavigable(coord))
     {
@@ -94,33 +97,38 @@ void Engine::addShip(sf::Vector2f cursor) {
     }
 }
 
-void Engine::addShips() {
-    while(shipsManager.getSizeShips() != 3){
-        cout << "NB Ships : " << shipsManager.getSizeShips() << endl;
+void Engine::addShips() 
+{
+    while(shipsManager.getSizeShips() != 3)
+    {
         addShip(sf::Vector2f(rand()%769, rand()%769));
     }
 }
 
-void Engine::addNbShips(int nbNewShips){
+void Engine::addNbShips(int nbNewShips)
+{
     nbNewShips = nbNewShips + shipsManager.getSizeShips();
-    while(shipsManager.getSizeShips() != nbNewShips){
-        cout << "NB Ships : " << shipsManager.getSizeShips() << endl;
+    while(shipsManager.getSizeShips() != nbNewShips)
+    {
         addShip(sf::Vector2f(rand()%769, rand()%769));
     }
 }
 
-bool Engine::shootGun(sf::Vector2f target) { 
+bool Engine::shootGun(sf::Vector2f target) 
+{ 
     if(!gunsManager.shoot(target))
         std::cout << "cannot shoot"  << std::endl;
 }
 
-void Engine::update(sf::Vector2f mouse){
+void Engine::update(sf::Vector2f mouse)
+{
     bulletsManager.moveBullets();
     gunsManager.rotateGuns(mouse);
     frameCount++;
 }
 
-sf::Vector2u Engine::cursor2Grid(sf::Vector2f cursor) {
+sf::Vector2u Engine::cursor2Grid(sf::Vector2f cursor) 
+{
     return sf::Vector2u((uint)cursor.x/32, (uint)cursor.y/32);
 }
 
@@ -155,46 +163,36 @@ vector<sf::Vector2<int> > Engine::generateCloud(size_t height_range, size_t widt
     return cloud;
 }
 
-int Engine::getSizeGuns(){
+int Engine::getSizeGuns()
+{
     return gunsManager.getSizeGuns();
 }
 
-int Engine::getSizeShips(){
+int Engine::getSizeShips()
+{
     return shipsManager.getSizeShips();
 }
 
-int Engine::getSizeWalls(){
+int Engine::getSizeWalls()
+{
     return wallManager.getSizeWalls();
 }
 
 void Engine::moveOrShoot()
 {
     for (size_t i = 0; i < shipsManager.getSizeShips(); ++i) {
-        cout << "|-----------------Ship n°" << i << endl;
         //Retardement shoot
 
         if (shipsManager.AShipCanShoot(i)) {
-            cout << "SHOOT" << endl;
-            //Territory or Wall
             sf::Vector2f cursor = sf::Vector2f(rand()%769, rand()%769);
-            cout << "1" << endl;
             sf::Vector2u coord = cursor2Grid(cursor);
-            cout << "2" << endl;
-            /*
-            if (wallManager.getSizeWalls() != 0)
-                {
-                    shipsManager.shoot(i, wallManager.wallPosition(rand() % wallManager.getSizeWalls()));
-                }
-            */
+            
             while(!territory.inTerritory(coord) && !wallManager.wallsHere(cursor)){
-                cout << "3" << endl;
                 cursor = sf::Vector2f(rand()%769, rand()%769);
-                cout << "4" << endl;
                 coord = cursor2Grid(cursor);
-                cout << "5" << endl;
             }
-            cout << "fin" << endl;
-            shipsManager.shoot(i, cursor/*sf::Vector2f(coord.x*32+16, coord.y*32+16)*/);
+            
+            shipsManager.shoot(i, cursor);
         } else {
             sf::Vector2f shipPos = shipsManager.getPositionShip(i);
             
@@ -213,16 +211,9 @@ void Engine::moveOrShoot()
                     destination = sf::Vector2f(rand()%769, rand()%769);
                     coord = cursor2Grid(destination);
                 }
-                cout << "-------------------------------------------" << destination.x << ", " << destination.y << endl;
+                
                 shipsManager.ShipSetDestination(i, destination);
             }
-
-
-            cout << "MOVE" << endl;
-            cout << "Destination : (" << shipsManager.getDestination(i).x << ", " << shipsManager.getDestination(i).y << ")" << endl;
-            
-            cout << "From : (" << shipPos.x << ", " << shipPos.y << ")" << endl;
-
 
             if(shipPos.x < shipsManager.getDestination(i).x){
                 shipPos.x = shipPos.x + 0.5;
@@ -250,37 +241,33 @@ void Engine::moveOrShoot()
                     destination = sf::Vector2f(rand()%769, rand()%769);
                     coord = cursor2Grid(destination);
                 }
-                cout << "-------------------------------------------" << destination.x << ", " << destination.y << endl;
                 shipsManager.ShipSetDestination(i, destination);
             }
             else
                 shipsManager.move(i, shipPos);
 
-            cout << "To : (" << shipPos.x << ", " << shipPos.y << ")" << endl;
-            
-
         }
     }
 }
 
-void Engine::generateWall(){
+void Engine::generateWall()
+{
     for (int i = 0; i < castlesManager.getSizeCastles(); ++i)
     {
         sf::Vector2u castlePosition = cursor2Grid(castlesManager.getPositionCastle(i));
-        int xmin = castlePosition.x-2; // 14 = castle.x;
+        int xmin = castlePosition.x-2;
         int xmax = castlePosition.x+2;
-        int ymin = castlePosition.y-2;  // 5 = castle.y;
+        int ymin = castlePosition.y-2;
         int ymax = castlePosition.y+2; 
 
-        cout << "CastlePosition : (" << castlePosition.x << ", "<< castlePosition.y << ")" << endl;
-        
-        for(int x = xmin; x <= xmax; x++){
+        for(int x = xmin; x <= xmax; x++)
+        {
             addWall(sf::Vector2f(x*32+16, ymin*32+16));
             addWall(sf::Vector2f(x*32+16, ymax*32+16));    
         }
-        for(int y = ymin+1; y <= ymax-1; y++){
+        for(int y = ymin+1; y <= ymax-1; y++)
+        {
             addWall(sf::Vector2f(xmin*32+16, y*32+16));
-            //TODO
             addWall(sf::Vector2f(xmax*32+16, y*32+16));    
         }
     }
@@ -288,7 +275,8 @@ void Engine::generateWall(){
     testTerritory();   
 }
 
-void Engine::testTerritory(){
+void Engine::testTerritory()
+{
     territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
     for (int x = 0; x < 24; ++x)
     {
@@ -296,20 +284,18 @@ void Engine::testTerritory(){
         {
             if (mapManager.isConstructibleCastle(sf::Vector2u(x, y)))
             {
-                cout<< "Castle : " << x << ", " << y << endl;
                 sf::Vector2u castlePosition = sf::Vector2u(x, y);
                 territory.makeBackUp();
                 territory.calculateTerritory(wallManager.walls, castlePosition, true);
-                cout << "Territory is ok : " << territory.verificationTerritory(wallManager.walls) << endl;
+                
                 if (!territory.verificationTerritory(wallManager.walls))
                 {
-                    cout << "\tFalse" << endl;
                     territory.useBackUp();
                     territory.updateTileMap();
                     castlesManager.deleteCastle(sf::Vector2f(x*32+16, y*32+16));
                 }else{
-                    cout << "\tTrue" << endl;
-                    if(!castlesManager.castlesHere(sf::Vector2f(x*32+16, y*32+16))){
+                    if(!castlesManager.castlesHere(sf::Vector2f(x*32+16, y*32+16)))
+                    {
                         castlesManager.placeCastle(sf::Vector2f(x*32+16, y*32+16));
                     }
                 }
@@ -318,22 +304,21 @@ void Engine::testTerritory(){
     }
 }
 
-void Engine::checkGunsInTerritory(){
-    //TODO
-    for(int gunNumber = 0 ; gunNumber < gunsManager.getSizeGuns() ; gunNumber++){
-        if(!(territory.inTerritory(cursor2Grid(gunsManager.gunPosition(gunNumber))))){
-            //Pas dans le territoire
+void Engine::checkGunsInTerritory()
+{
+    for(int gunNumber = 0 ; gunNumber < gunsManager.getSizeGuns() ; gunNumber++)
+    {
+        if(!(territory.inTerritory(cursor2Grid(gunsManager.gunPosition(gunNumber)))))
+        {
             gunsManager.setGunCanShoot(false, gunNumber);
-            cout << "Gun : " << gunNumber << "can't shoot" << endl;
         }else{
-            //Can Shoot
             gunsManager.setGunCanShoot(true, gunNumber);
-            cout << "Gun : " << gunNumber << "can shoot" << endl;
         }
     }
 }
 
-void Engine::setStepPartie(int i){
+void Engine::setStepPartie(int i)
+{
     stepPartie = i;
 }
 
@@ -393,11 +378,12 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
             }
-            switch(event.type){
+            switch(event.type)
+            {
                 case sf::Event::MouseButtonPressed:
                 {
-                    if (event.mouseButton.button == sf::Mouse::Left) {
-                        cout << "Left Mouse Button Pressed" << endl;
+                    if (event.mouseButton.button == sf::Mouse::Left) 
+                    {
                         if (chooseCastle(sf::Vector2f(event.mouseButton.x, event.mouseButton.y)))
                         {
                             stepPartie = 4;
@@ -426,13 +412,12 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
             }
             generateWall();
             
-            cout << "***************************" << endl;
             stepPartie = 5;
             newStep = true;
-            //testTerritory();
+            
             territory.calculateNoTerritory(wallManager.walls);
             drawGame(window);
-            cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+            
             if (!territory.verificationTerritory(wallManager.walls))
             {
                 territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
@@ -453,15 +438,14 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
             }
-            cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
-            cout << " NB Canon : " << getSizeGuns() << endl;
+            
             if ((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15 || getSizeGuns() < 3)
             {
                 switch(event.type){
                     case sf::Event::MouseButtonPressed:
                     {
-                        if (event.mouseButton.button == sf::Mouse::Left) {
-                            cout << "Left Mouse Button Pressed" << endl;
+                        if (event.mouseButton.button == sf::Mouse::Left) 
+                        {
                             addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                             if (getSizeGuns() == 3)
                             {
@@ -510,18 +494,17 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
-
-                //Check Gun in Territory
                 checkGunsInTerritory();
             }
-            cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
-
+            
             if ((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15 && getSizeShips() != 0)
             {
-                switch(event.type){
+                switch(event.type)
+                {
                     case sf::Event::MouseButtonPressed:
                     {
-                        if (event.mouseButton.button == sf::Mouse::Right) {
+                        if (event.mouseButton.button == sf::Mouse::Right) 
+                        {
                             shootGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
                         }
                     }
@@ -553,27 +536,26 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
         {
             if (newStep)
             {
-                introPartie(window, "Player repair walls if they are a ships during 25 seconds");
+                introPartie(window, "Place walls in 25 seconds");
                 cout << "REPARATION" << endl;
                 newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
-                //TODO
                 testTerritory();
                 territory.drawTerritory(window);
             }
-            cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
             
             if (getSizeShips() != 0)
             {
                 if((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 25)
                 {        
-                    switch(event.type){
+                    switch(event.type)
+                    {
                         case sf::Event::MouseButtonPressed:
                         {
-                            if (event.mouseButton.button == sf::Mouse::Left) {
-                                addWall(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
-                                cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
+                            if (event.mouseButton.button == sf::Mouse::Left) 
+                            {
+                                addWall(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));    
                             }
                         }
                         break;
@@ -584,13 +566,11 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 }
                 else
                 {
-                    //Si pas de territoire => fin
                     addNbShips(2);
-                    //stepPartie = 7;
                     testTerritory();
-                            territory.calculateNoTerritory(wallManager.walls);
-                            drawGame(window);
-                    cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+                    territory.calculateNoTerritory(wallManager.walls);
+                    drawGame(window);
+                    
                     if (!territory.verificationTerritory(wallManager.walls))
                     {
                         territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
@@ -605,19 +585,6 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                         newStep = true;
                         switchStepPartie(event, window);
                     }
-                    //TO DO
-                    /*
-                    if (!territory.isARealTerritory(castlesManager.castles, wallManager.walls))
-                    {
-                        //TO DO Prendre le vrai territoire
-                        cout << "test" << endl;
-                        
-                        territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
-                        territory.drawTerritory(window);
-                        stepPartie = 9;
-                        newStep = true;
-                        switchStepPartie(event, window);
-                    }*/
 
                     territory.isARealTerritory(castlesManager.castles, wallManager.walls);
                     drawGame(window);
@@ -625,10 +592,6 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                     stepPartie = 10;
                     newStep = true;
                     switchStepPartie(event, window);
-
-
-
-
                 }
             }
             else
@@ -641,23 +604,25 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
 
         case END:
         {
+            if(!window.isOpen()){
+                //Pour regler le pb
+                return;
+            }
             if (newStep)
             {
-                //introPartie(window, "End of the game");
                 cout << "END" << endl;
                 newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
                 newPartieQuestion(window);
+            }else{
+                window.close();
             }
-            //window.close();
         }
         break;
 
         case PLACE_GUNS:
         {
-            //TODO
-
             if (newStep)
             {
                 introPartie(window, "place guns during 15 seconds");
@@ -665,30 +630,19 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
-                //Test Territoire
-
-                //testTerritory();
-                /*cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
-                if (!territory.verificationTerritory(wallManager.walls))
-                {
-                    territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
-                    territory.drawTerritory(window);
-                    stepPartie = 9;
-                    newStep = true;
-                }*/
             }
-            cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
             
             if (getSizeShips() != 0)
             {
                 if((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) < 15 && gunsManager.getSizeGuns() < castlesManager.getSizeCastles()*3)
                 {        
-                    switch(event.type){
+                    switch(event.type)
+                    {
                         case sf::Event::MouseButtonPressed:
                         {
-                            if (event.mouseButton.button == sf::Mouse::Left) {
+                            if (event.mouseButton.button == sf::Mouse::Left) 
+                            {
                                 addGun(sf::Vector2f(event.mouseButton.x, event.mouseButton.y));
-                                cout << "(" << event.mouseButton.x << "," << event.mouseButton.y << ")" << endl;
                             }
                         }
                         break;
@@ -744,8 +698,10 @@ void Engine::introPartie(sf::RenderWindow &window, char *texte){
 
     sf::Event event;
 
-    while(1) {
-        while (window.pollEvent(event)) {
+    while(1) 
+    {
+        while (window.pollEvent(event)) 
+        {
             switch(event.type){
                 case sf::Event::Closed:
                 {
@@ -756,12 +712,14 @@ void Engine::introPartie(sf::RenderWindow &window, char *texte){
 
                 case sf::Event::KeyPressed:
                 {
-                    if (event.key.code == sf::Keyboard::Return){
+                    if (event.key.code == sf::Keyboard::Return)
+                    {
                         window.clear(sf::Color(255,255,255,255));
                         drawGame(window);
                         return;
                     }
-                    else if (event.key.code == sf::Keyboard::Escape) {
+                    else if (event.key.code == sf::Keyboard::Escape) 
+                    {
                         window.close();
                         return;
                     }
@@ -803,8 +761,10 @@ void Engine::pause_game(sf::RenderWindow &window){
 
     sf::Event event;
 
-    while(1) {
-        while (window.pollEvent(event)) {
+    while(1) 
+    {
+        while (window.pollEvent(event)) 
+        {
             switch(event.type){
                 case sf::Event::Closed:
                 {
@@ -815,12 +775,14 @@ void Engine::pause_game(sf::RenderWindow &window){
 
                 case sf::Event::KeyPressed:
                 {
-                    if (event.key.code == sf::Keyboard::P){
+                    if (event.key.code == sf::Keyboard::P)
+                    {
                         window.clear(sf::Color(255,255,255,255));
                         drawGame(window);
                         return;
                     }
-                    else if (event.key.code == sf::Keyboard::Escape) {
+                    else if (event.key.code == sf::Keyboard::Escape) 
+                    {
                         window.close();
                         return;
                     }
@@ -844,7 +806,8 @@ void Engine::pause_game(sf::RenderWindow &window){
 
 
 
-void Engine::game_intro(sf::RenderWindow &window){
+void Engine::game_intro(sf::RenderWindow &window)
+{
     sf::Text titleGame;
     sf::Text powered;
     sf::Texture textures[2];
@@ -924,8 +887,10 @@ void Engine::game_intro(sf::RenderWindow &window){
 
     sf::Event event;
 
-    while(1) {
-        while (window.pollEvent(event)) {
+    while(1) 
+    {
+        while (window.pollEvent(event)) 
+        {
             switch(event.type){
                 case sf::Event::Closed:
                 {
@@ -936,10 +901,12 @@ void Engine::game_intro(sf::RenderWindow &window){
 
                 case sf::Event::KeyPressed:
                 {
-                    if (event.key.code == sf::Keyboard::Space){
+                    if (event.key.code == sf::Keyboard::Space)
+                    {
                         return;
                     }
-                    else if (event.key.code == sf::Keyboard::Escape) {
+                    else if (event.key.code == sf::Keyboard::Escape) 
+                    {
                         window.close();
                         return;
                     }
@@ -978,7 +945,7 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
             newStep = true;
             switchStepPartie(event, window);
         }
-        if (stepPartie == 7 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
+        if (stepPartie == 7 && ((clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15 || getSizeShips() == 0))
         {
             bulletsManager.clearBullets();
             shipsManager.setCanShootAll();
@@ -996,13 +963,11 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
         }
         if (stepPartie == 8 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 25)
         {
-            //Si pas de territoire => fin
             addNbShips(2);
-            //stepPartie = 7;
             testTerritory();
-                    territory.calculateNoTerritory(wallManager.walls);
-                    drawGame(window);
-            cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
+            territory.calculateNoTerritory(wallManager.walls);
+            drawGame(window);
+
             if (!territory.verificationTerritory(wallManager.walls))
             {
                 territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
@@ -1017,19 +982,7 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
                 newStep = true;
                 switchStepPartie(event, window);
             }
-            cout << "COUCOU" << endl;
-            //PB HERE
-            /*if (!territory.isARealTerritory(castlesManager.castles, wallManager.walls))
-            {
-                //TO DO Prendre le vrai territoire
-                cout << "test" << endl;
 
-                territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
-                territory.drawTerritory(window);
-                stepPartie = 9;
-                newStep = true;
-                switchStepPartie(event, window);
-            }*/
             territory.isARealTerritory(castlesManager.castles, wallManager.walls);
             
             drawGame(window);
@@ -1065,8 +1018,11 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
 
     sf::Event event;
 
-    while(1) {
-        while (window.pollEvent(event)) {
+    while(1) 
+    {
+        
+        while (window.pollEvent(event)) 
+        {
             switch(event.type){
                 case sf::Event::Closed:
                 {
@@ -1077,7 +1033,8 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
 
                 case sf::Event::KeyPressed:
                 {
-                    if (event.key.code == sf::Keyboard::Escape) {
+                    if (event.key.code == sf::Keyboard::Escape) 
+                    {
                         window.close();
                         return;
                     }
