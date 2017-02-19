@@ -1,7 +1,3 @@
-//
-// Created by xenoth on 18/01/17.
-//
-
 #ifndef RAMPART_TERRITORY_H
 #define RAMPART_TERRITORY_H
 

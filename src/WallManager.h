@@ -17,19 +17,18 @@ public:
     WallManager();
 
     inline void addWall(sf::Vector2f pos) { walls.push_back(Wall(texture, pos)); };
+    inline void clearWalls() { walls.clear(); };
+
+    int getSizeWalls();
+    bool wallsHere(sf::Vector2f cursor);
+
+    sf::Vector2f wallPosition(size_t i);
 
     virtual void notifyExplosion(void *from, sf::Vector2f pos, bool faction);
 
-    inline void clearWalls() { walls.clear(); };
-
     void drawWalls(sf::RenderWindow & window);
 
-    int getSizeWalls();
-
-    bool wallsHere(sf::Vector2f cursor);
-
     std::vector<Wall> walls;
-    sf::Vector2f wallPosition(size_t i);
 
 private:
     sf::Texture texture;

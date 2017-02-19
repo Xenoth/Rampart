@@ -19,32 +19,28 @@ class ShipsManager : public Exploser {
 
         void placeShip(sf::Vector2f pos);
         inline void clearShips() { ships.clear(); };
+        sf::Vector2f getPositionShip(size_t i);
 
-        void drawShips(sf::RenderWindow & window);
-        void shoot(size_t i, sf::Vector2f target);
-        void moveOrShoot();
         bool AShipCanShoot(size_t i);
         void ChangeCanShoot(size_t i);
         void setCanShoot(size_t i);
         void setCanShootAll();
-
-        sf::Vector2f getPositionShip(size_t i);
+        void shoot(size_t i, sf::Vector2f target);
         void move(size_t i, sf::Vector2f pos);
-
-        void notifyExplosion(void *from, sf::Vector2f pos, bool faction);
-
+        void moveOrShoot();
+        
         size_t getSizeShips();
-
         bool shipsHere(sf::Vector2f cursor);
 
         bool AShipHasDestination(size_t i);
-
         void ShipSetDestination(size_t i, sf::Vector2f destination);
-           
         sf::Vector2f getDestination(size_t i);
-
         void setNoneDestination(size_t i);
 
+        void drawShips(sf::RenderWindow & window);
+
+        void notifyExplosion(void *from, sf::Vector2f pos, bool faction);
+        
     private :
 
         std::vector<Shooter *> shooters;

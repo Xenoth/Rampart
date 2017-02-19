@@ -24,13 +24,8 @@ class MapManager
 		inline bool isConstructibleCastle(sf::Vector2u coord) { return (tiles.at(coord.y*mapSize.x+coord.x)==2); };
 		inline bool isNavigable(sf::Vector2u coord) { return (tiles.at(coord.y*mapSize.x+coord.x)==0); };
 
-		//inline bool inTerritory(sf::Vector2u coord) { return (tiles.at(coord.y*mapSize.x+coord.x)==3); };
-
 		void drawMap(sf::RenderWindow & window, size_t frameCount);
-		/*void remplissage(std::vector<Wall> walls, sf::Vector2u position);
-
-		bool wallsHere(std::vector<Wall> walls, sf::Vector2f cursor);*/
-
+		
 		inline std::vector<uint8_t> getTiles(){return tiles;};
 		inline sf::Vector2u getMapSize(){return mapSize;};
 	

@@ -1,7 +1,3 @@
-//
-// Created by xenoth on 04/02/17.
-//
-
 #ifndef RAMPART_WALL_H
 #define RAMPART_WALL_H
 

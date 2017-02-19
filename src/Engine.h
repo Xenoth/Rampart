@@ -67,6 +67,8 @@ class Engine
 
 		void addNbShips(int nbNewShips);
 
+		void checkGunsInTerritory();
+
 		sf::Clock clock;
 		sf::Time pauseClock;
 		bool pauseGame;

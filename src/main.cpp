@@ -62,7 +62,6 @@ int main(int argc, char* argv[])
         if(engine.pauseGame && window.isOpen())
         {
             engine.pauseClock = engine.clock.getElapsedTime() + engine.pauseClock;
-            cout << " PAUSE CLOCK : " << engine.pauseClock.asSeconds() << endl;
             engine.pause();
             engine.pause_game(window);
             engine.pauseGame=false;

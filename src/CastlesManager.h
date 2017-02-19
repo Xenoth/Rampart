@@ -1,7 +1,3 @@
-//
-// Created by xenoth on 04/02/17.
-//
-
 #ifndef RAMPART_CASTLESMANAGER_H
 #define RAMPART_CASTLESMANAGER_H
 
@@ -19,12 +15,12 @@ public:
     inline void clearCastles() { castles.clear(); };
 
     void placeCastle(sf::Vector2f pos);
+
     size_t getSizeCastles();
     sf::Vector2f getPositionCastle(size_t i);
+
     bool castlesHere(sf::Vector2f cursor);
     void deleteCastle(sf::Vector2f cursor);
-
-    
 
     std::vector<Castle> castles;
 

@@ -1,7 +1,3 @@
-//
-// Created by xenoth on 04/02/17.
-//
-
 #ifndef RAMPART_CASTLE_H
 #define RAMPART_CASTLE_H
 

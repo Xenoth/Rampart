@@ -15,7 +15,8 @@ void GunsManager::placeGun(sf::Vector2f pos)
 	}
 }
 
-bool GunsManager::gunsHere(sf::Vector2f cursor){
+bool GunsManager::gunsHere(sf::Vector2f cursor)
+{
 	for (int i = 0; i < guns.size(); ++i)
     {
         if ( (int)(guns.at(i).getPos().x/32) == (int)(cursor.x/32) && (int)(guns.at(i).getPos().y/32) == (int)(cursor.y/32))
@@ -40,7 +41,6 @@ bool GunsManager::shoot(sf::Vector2f target)
 	{
 		if(guns.at(i).canShoot)
 		{
-			std::cout << "Shoot (GunsManager.h) : from = " << &guns.at(i) << " (gun " << i << ")" << std::endl;
 			guns.at(i).shoot(guns.at(i).getPos(), target, true, &guns.at(i));
 			guns.at(i).canShoot=false;
 			return true;
@@ -59,7 +59,6 @@ void GunsManager::rotateGuns(sf::Vector2f mouse)
 
 void GunsManager::notifyExplosion(void *from, sf::Vector2f pos, bool faction)
 {
-	std::cout << "notify Explosion (GunsManager.h) : from = " << from << std::endl;
 	if(faction)
 	{
 		Gun *p_from = static_cast<Gun *>(from);
@@ -89,6 +88,7 @@ size_t GunsManager::getSizeGuns()
 	return guns.size();
 }
 
-sf::Vector2f GunsManager::gunPosition(size_t i){
+sf::Vector2f GunsManager::gunPosition(size_t i)
+{
 	return guns.at(i).getPos();
 }

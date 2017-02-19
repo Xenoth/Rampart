@@ -318,6 +318,21 @@ void Engine::testTerritory(){
     }
 }
 
+void Engine::checkGunsInTerritory(){
+    //TODO
+    for(int gunNumber = 0 ; gunNumber < gunsManager.getSizeGuns() ; gunNumber++){
+        if(!(territory.inTerritory(cursor2Grid(gunsManager.gunPosition(gunNumber))))){
+            //Pas dans le territoire
+            gunsManager.setGunCanShoot(false, gunNumber);
+            cout << "Gun : " << gunNumber << "can't shoot" << endl;
+        }else{
+            //Can Shoot
+            gunsManager.setGunCanShoot(true, gunNumber);
+            cout << "Gun : " << gunNumber << "can shoot" << endl;
+        }
+    }
+}
+
 void Engine::setStepPartie(int i){
     stepPartie = i;
 }
@@ -495,21 +510,9 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                 newStep = false;
                 clock.restart();
                 pauseClock = clock.getElapsedTime();
-                //Test Territoire
 
-                //testTerritory();
-                /*
-                cout << "Territory is ok before FIGHT: " << territory.verificationTerritory(wallManager.walls) << endl;
-                if (!territory.verificationTerritory(wallManager.walls))
-                {
-                    territory.loadTileMap(mapManager.getTiles(), mapManager.getMapSize());
-                    territory.drawTerritory(window);
-                    stepPartie = 9;
-                    newStep = true;
-                }*/
-                   
-
-
+                //Check Gun in Territory
+                checkGunsInTerritory();
             }
             cout << clock.getElapsedTime().asSeconds() + pauseClock.asSeconds() << endl;
 

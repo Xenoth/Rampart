@@ -1,5 +1,4 @@
 #include "ShipsManager.h"
-
 #include "GunsManager.h"
 
 using namespace std;
@@ -72,7 +71,6 @@ void ShipsManager::move(size_t i, sf::Vector2f pos){
 
 void ShipsManager::shoot(size_t i, sf::Vector2f target)
 {
-    std::cout << "Shoot (ShipsManager.h) : from = " << &ships.at(i) << " (Ship " << i << ")" << std::endl;
     ships.at(i).shoot(ships.at(i).getPos(), target, false, &ships.at(i));
     ships.at(i).canShoot=false;
 }
@@ -121,7 +119,8 @@ void ShipsManager::ShipSetDestination(size_t i, sf::Vector2f destination)
     ships.at(i).hasDestination = true;
 }
 
-sf::Vector2f ShipsManager::getDestination(size_t i){
+sf::Vector2f ShipsManager::getDestination(size_t i)
+{
     return ships.at(i).getDestination();
 }
 

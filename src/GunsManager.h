@@ -31,6 +31,8 @@ class GunsManager : public Exploser
 		bool gunsHere(sf::Vector2f cursor);
 		sf::Vector2f gunPosition(size_t i);
 
+		inline void setGunCanShoot(bool canShootB, size_t i){ guns.at(i).canShoot = canShootB;};
+
 	private :
 
 		std::vector<Shooter *> shooters;

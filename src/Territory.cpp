@@ -1,36 +1,32 @@
-//
-// Created by xenoth on 18/01/17.
-//
-
 #include "Territory.h"
 
 Territory::Territory() {}
 
-void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize){
+void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize)
+{
     territory_map.clear();
     this->sizeMap = mapSize;
-    for (size_t i = 0; i < tiles.size(); i++){
+    for (size_t i = 0; i < tiles.size(); i++)
+    {
         if(tiles.at(i) != 0){
             territory_map.push_back(1);
             backup_territory_map.push_back(1);
-        } else{
+        }else{
             territory_map.push_back(0);
             backup_territory_map.push_back(0);
         }
     }
 
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
-
 }
 
-void Territory::updateTileMap(){
+void Territory::updateTileMap()
+{
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
-//sideBySide
-
-void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle){
-    //std::cout << "REMPLISSAGE"  << std::endl;
+void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle)
+{
     if (isCastle)
     {
         std::cout << "\tCastle"  << std::endl;
@@ -41,10 +37,8 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
     }
     if (territory_map.at(castlePosition.y*sizeMap.x+castlePosition.x) == 1)
     {
-        //std::cout << "\tHerbe"  << std::endl;
         if (!wallsHere(walls, sf::Vector2f(castlePosition.x*32+16, castlePosition.y*32+16)))
         {
-            //std::cout << "\tPas de Mur"  << std::endl;
             territory_map.at(castlePosition.y*sizeMap.x+castlePosition.x)=2;
             calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x+1, (uint)castlePosition.y), false);
             calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x-1, (uint)castlePosition.y), false);
