@@ -432,7 +432,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
         {
             if (newStep)
             {
-                introPartie(window, "Place 3 guns Max in 15 seconds");
+                introPartie(window, "Place 3 guns in 15 seconds");
                 cout << "PLACE_3_GUNS" << endl;
                 newStep = false;
                 clock.restart();
@@ -489,7 +489,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
         {
             if (newStep)
             {
-                introPartie(window, "Ships shoot walls & Player shoot ships with guns during 15 seconds");
+                introPartie(window, "Fight Ships during 15 seconds");
                 cout << "FIGHT" << endl;
                 newStep = false;
                 clock.restart();
@@ -578,20 +578,21 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
                         stepPartie = 9;
                         newStep = true;
                         switchStepPartie(event, window);
-                    }
+                    }else
                     if (castlesManager.getSizeCastles() == 0)
                     {
                         stepPartie = 9;
                         newStep = true;
                         switchStepPartie(event, window);
+                    }else{
+
+                        territory.isARealTerritory(castlesManager.castles, wallManager.walls);
+                        drawGame(window);
+
+                        stepPartie = 10;
+                        newStep = true;
+                        switchStepPartie(event, window);
                     }
-
-                    territory.isARealTerritory(castlesManager.castles, wallManager.walls);
-                    drawGame(window);
-
-                    stepPartie = 10;
-                    newStep = true;
-                    switchStepPartie(event, window);
                 }
             }
             else
@@ -605,7 +606,6 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
         case END:
         {
             if(!window.isOpen()){
-                //Pour regler le pb
                 exit(1);
             }
             if (newStep)
@@ -625,7 +625,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
         {
             if (newStep)
             {
-                introPartie(window, "place guns during 15 seconds");
+                introPartie(window, "Place guns in 15 seconds");
                 cout << "PLACE_GUNS" << endl;
                 newStep = false;
                 clock.restart();
@@ -976,19 +976,20 @@ void Engine::printTimer(sf::Text chrono, sf::RenderWindow &window, sf::Event eve
                 newStep = true;
                 switchStepPartie(event, window);
             }
-            if (castlesManager.getSizeCastles() == 0)
+            else if (castlesManager.getSizeCastles() == 0)
             {
                 stepPartie = 9;
                 newStep = true;
                 switchStepPartie(event, window);
-            }
+            }else{
 
-            territory.isARealTerritory(castlesManager.castles, wallManager.walls);
-            
-            drawGame(window);
-            stepPartie = 10;
-            newStep = true;
-            switchStepPartie(event, window);
+                territory.isARealTerritory(castlesManager.castles, wallManager.walls);
+                
+                drawGame(window);
+                stepPartie = 10;
+                newStep = true;
+                switchStepPartie(event, window);
+            }
         }
         if (stepPartie == 10 && (clock.getElapsedTime().asSeconds() + pauseClock.asSeconds()) >= 15)
         {
@@ -1020,10 +1021,10 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
 
     while(1) 
     {
-        
         while (window.pollEvent(event)) 
         {
             switch(event.type){
+
                 case sf::Event::Closed:
                 {
                     window.close();
@@ -1040,9 +1041,10 @@ void Engine::newPartieQuestion(sf::RenderWindow &window)
                     }
                     else if (event.key.code == sf::Keyboard::O || event.key.code == sf::Keyboard::Space)
                     {
-                        window.clear(sf::Color(255,255,255,255));
+                         window.clear(sf::Color(255,255,255,255));
                         drawGame(window);
-                        setStepPartie(2);
+                        stepPartie = 2;
+                        newStep = true;
                         switchStepPartie(event, window);
                         return;
                     }
