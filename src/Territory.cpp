@@ -29,7 +29,6 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
 {
     if (isCastle)
     {
-        std::cout << "\tCastle"  << std::endl;
         calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x+1, (uint)castlePosition.y), false);
         calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x-1, (uint)castlePosition.y), false);
         calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x, (uint)castlePosition.y+1), false);
@@ -49,10 +48,8 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
-
-
-
-void Territory::territorySideBySide(sf::Vector2u position){
+void Territory::territorySideBySide(sf::Vector2u position)
+{
     if (backup_territory_map.at(position.y*sizeMap.x+position.x) == 2)
     {
         backup_territory_map.at(position.y*sizeMap.x+position.x)=9;
@@ -63,14 +60,11 @@ void Territory::territorySideBySide(sf::Vector2u position){
     }
 }
 
-bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> walls){
+bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> walls)
+{
     makeBackUp();
 
-    //cursor2Grid(castlesManager.getPositionCastle(0));
-
     //Nb Walls
-    std::cout << "\tNB WALLS" << std::endl;
-    int nbWalls = 0;
     for (int x = 0; x < sizeMap.x; ++x)
     {
         for (int y = 0; y < sizeMap.y; ++y)
@@ -78,13 +72,10 @@ bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> 
             if (wallsHere(walls, sf::Vector2f(x*32+16, y*32+16)) && backup_territory_map.at(y*sizeMap.x+x)==4)
             {
                 backup_territory_map.at(y*sizeMap.x+x)=2;
-                nbWalls++;
             }
         }
     }
-    std::cout << "NB WALLS : " << nbWalls << std::endl;
 
-    nbWalls = 0;
     for (int x = 0; x < sizeMap.x; ++x)
     {
         for (int y = 0; y < sizeMap.y; ++y)
@@ -92,73 +83,14 @@ bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> 
             if (wallsHere(walls, sf::Vector2f(x*32+16, y*32+16)) && backup_territory_map.at(y*sizeMap.x+x)==4)
             {
                 backup_territory_map.at(y*sizeMap.x+x)=2;
-                nbWalls++;
             }
         }
     }
-    std::cout << "NB WALLS : " << nbWalls << std::endl;
-
-    //PB
+    
     for (int i = 0; i < castles.size(); ++i)
     {
-        //sf::Vector2u((uint)cursor.x/32, (uint)cursor.y/32)
-        //territorySideBySide(cursor2Grid(castles.at(i).getPos()));
         territorySideBySide(sf::Vector2u((uint)castles.at(i).getPos().x/32, (uint)castles.at(i).getPos().y/32));
     }
-    //territorySideBySide(position);
-
-
-
-
-
-
-
-//Affichage
-    for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
-            {
-                std::cout << x << ", " << y << " -> 2" << std::endl;
-            }
-            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
-            {
-                std::cout << x << ", " << y << " -> 9" << std::endl;
-            } 
-        }
-    }
-
-    //Afficher nb 2
-    std::cout << "\tNB 2?" << std::endl;
-    int count = 0;
-    for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
-            {
-                count++;
-            }  
-        }
-    }
-    std::cout << count << std::endl;
-
-    //Afficher nb 9
-    std::cout << "\tNB 9?" << std::endl;
-    count = 0;
-    for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
-            {
-                count++;
-            }  
-        }
-    }
-    std::cout << count << std::endl;
-//Fin Affichage
 
 //Inversion
     for (int x = 0; x < sizeMap.x; ++x)
@@ -176,94 +108,29 @@ bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> 
         }
     }
 
-//Affichage
-    for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
-            {
-                std::cout << x << ", " << y << " -> 2" << std::endl;
-            }
-            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
-            {
-                std::cout << x << ", " << y << " -> 9" << std::endl;
-            } 
-        }
-    }
-
-    //Afficher nb 2
-    std::cout << "\tNB 2?" << std::endl;
-    count = 0;
-    for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (backup_territory_map.at(y*sizeMap.x+x) == 2)
-            {
-                count++;
-            }  
-        }
-    }
-    std::cout << count << std::endl;
-
-    //Afficher nb 9
-    std::cout << "\tNB 9?" << std::endl;
-    count = 0;
-    for (int x = 0; x < sizeMap.x; ++x)
-    {
-        for (int y = 0; y < sizeMap.y; ++y)
-        {
-            if (backup_territory_map.at(y*sizeMap.x+x) == 9)
-            {
-                count++;
-            }  
-        }
-    }
-    std::cout << count << std::endl;
-//Fin Affichage
-
-
-
-
-
-
-
-
-
     useBackUp();
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), backup_territory_map, sizeMap);
 
-
-
-
-
-
-    std::cout << "\t9?" << std::endl; // Si un 9 => perdu
+    //9? => if > 1 => game over
     for (int x = 0; x < sizeMap.x; ++x)
     {
         for (int y = 0; y < sizeMap.y; ++y)
         {
             if (backup_territory_map.at(y*sizeMap.x+x) == 9)
             {
-                std::cout << "\tFalse" << std::endl;
                 makeBackUp();
                 return false;
             }  
         }
     }
-    std::cout << "\tTrue" << std::endl;
+
     makeBackUp();
     return true;
 }
 
-
-
-
-
-void Territory::calculateNoTerritory(std::vector<Wall> walls){
-    //TO DO
-    std::cout << "\tSET WALLS" << std::endl;
+void Territory::calculateNoTerritory(std::vector<Wall> walls)
+{
+    //SET WALLS
     for (int x = 0; x < sizeMap.x; ++x)
     {
         for (int y = 0; y < sizeMap.y; ++y)
@@ -276,10 +143,10 @@ void Territory::calculateNoTerritory(std::vector<Wall> walls){
     }
 
 
-
-    std::cout << "\tCALCULATE NO TERRITORY" << std::endl;
+    //CALCULATE NO TERRITORY
     int countUpdate = 1;
-    while(countCaseEmpty()!=0 && countUpdate!=0){
+    while(countCaseEmpty()!=0 && countUpdate!=0)
+    {
         countUpdate = 0;
         for (int x = 0; x < sizeMap.x; ++x)
         {
@@ -298,24 +165,20 @@ void Territory::calculateNoTerritory(std::vector<Wall> walls){
                     {
                         territory_map.at(y*sizeMap.x+x) = 3;
                         countUpdate++;
-                        //std::cout << "Territory -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Water or 3"<< std::endl;
                     } 
                 }  
             }
         }
-        std::cout << "countUpdate : " << countUpdate << std::endl;
     }
 
     //
-
-    std::cout << "\tSET TERRITORY" << std::endl;
+    //SET TERRITORY
     for (int x = 0; x < sizeMap.x; ++x)
     {
         for (int y = 0; y < sizeMap.y; ++y)
         {
             if (territory_map.at(y*sizeMap.x+x) == 1)
             {
-                std::cout << "Territory -> x,y : " << x << ", " << y << std::endl;
                 territory_map.at(y*sizeMap.x+x) = 2;
             }  
         }
@@ -323,7 +186,6 @@ void Territory::calculateNoTerritory(std::vector<Wall> walls){
 
 
     //Nb Walls
-    std::cout << "\tNB WALLS" << std::endl;
     int nbWalls = 0;
     for (int x = 0; x < sizeMap.x; ++x)
     {
@@ -335,11 +197,12 @@ void Territory::calculateNoTerritory(std::vector<Wall> walls){
             }
         }
     }
-    std::cout << "NB WALLS : " << nbWalls << std::endl;
+
     tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
-int Territory::countCaseEmpty(){
+int Territory::countCaseEmpty()
+{
     int countEmpty = 0;
     for (int x = 0; x < sizeMap.x; ++x)
     {
@@ -350,11 +213,12 @@ int Territory::countCaseEmpty(){
             }
         }
     }
-    std::cout << "NB EMPTY : " << countEmpty << std::endl;
+
     return countEmpty;
 }
 
-bool Territory::wallsHere(std::vector<Wall> walls, sf::Vector2f cursor){
+bool Territory::wallsHere(std::vector<Wall> walls, sf::Vector2f cursor)
+{
     for (int i = 0; i < walls.size(); ++i)
     {
         if ( (int)(walls.at(i).getPos().x/32) == (int)(cursor.x/32) && (int)(walls.at(i).getPos().y/32) == (int)(cursor.y/32))
@@ -373,14 +237,14 @@ void Territory::whereIsTerritory()
         {
             if (territory_map.at(y*sizeMap.x+x) == 2)
             {
-                //Territory
                 std::cout << "Territory -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << std::endl;
             }
         }
     }
 }
 
-bool Territory::verificationTerritory(std::vector<Wall> walls){
+bool Territory::verificationTerritory(std::vector<Wall> walls)
+{
     int count = 0;
     for (int x = 0; x < sizeMap.x; ++x)
     {
@@ -392,42 +256,37 @@ bool Territory::verificationTerritory(std::vector<Wall> walls){
                 //Test Water
                 if (territory_map.at((y-1)*sizeMap.x+x) == 0 || territory_map.at((y+1)*sizeMap.x+x) == 0 || territory_map.at(y*sizeMap.x+(x+1)) == 0 || territory_map.at(y*sizeMap.x+(x-1)) == 0)
                 {
-                    std::cout << "Territory -> x,y : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Water"<< std::endl;
                     return false;
                 }
                 //Test Earth
                 if (territory_map.at((y-1)*sizeMap.x+x) == 1)
                 {
                     if(!wallsHere(walls, sf::Vector2f(x*32+16, (y-1)*32+16))){
-                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
                         return false;
                     }
                 }
                 if (territory_map.at((y+1)*sizeMap.x+x) == 1)
                 {
                     if(!wallsHere(walls, sf::Vector2f(x*32+16, (y+1)*32+16))){
-                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
                         return false;
                     }
                 }
                 if (territory_map.at(y*sizeMap.x+(x+1)) == 1)
                 {
                     if(!wallsHere(walls, sf::Vector2f((x+1)*32+16, y*32+16))){
-                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
                         return false;
                     }
                 }
                 if (territory_map.at(y*sizeMap.x+(x-1)) == 1)
                 {
                     if(!wallsHere(walls, sf::Vector2f((x-1)*32+16, y*32+16))){
-                        std::cout << "Territory -> x,y(-1) : " << x << ", " << y << " -> " << territory_map.at(y*sizeMap.x+x) << "\tnext to Earth"<< std::endl;
                         return false;
                     }
                 }
             }
         }
     }
-    std::cout << "Count : " << count << std::endl;
+
     if (count == 0)
     {
         return false;
@@ -436,10 +295,12 @@ bool Territory::verificationTerritory(std::vector<Wall> walls){
 }
 
 
-void Territory::makeBackUp(){
+void Territory::makeBackUp()
+{
     backup_territory_map = territory_map;
 }
 
-void Territory::useBackUp(){
+void Territory::useBackUp()
+{
     territory_map = backup_territory_map;
 }
