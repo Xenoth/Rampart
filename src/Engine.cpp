@@ -606,7 +606,7 @@ void Engine::switchStepPartie(sf::Event event, sf::RenderWindow &window)
         {
             if(!window.isOpen()){
                 //Pour regler le pb
-                return;
+                exit(1);
             }
             if (newStep)
             {
