@@ -19,8 +19,8 @@ Engine::Engine()
     newStep = false;
     pauseGame = false;
 
-    fontAncient.loadFromFile("ressources/ancient_medium.ttf");
-    texture.loadFromFile("ressources/black_opacity.png");
+    fontAncient.loadFromFile("../ressources/ancient_medium.ttf");
+    texture.loadFromFile("../ressources/black_opacity.png");
     
 }
 
@@ -823,8 +823,8 @@ void Engine::game_intro(sf::RenderWindow &window)
     powered.setFont(fontAncient);
     powered.setPosition(170, 440);
 
-    textures[0].loadFromFile("ressources/logo_c.png");
-    textures[1].loadFromFile("ressources/logo_sfml.png");
+    textures[0].loadFromFile("../ressources/logo_c.png");
+    textures[1].loadFromFile("../ressources/logo_sfml.png");
     logo_c.setTexture(textures[0]);
     logo_sfml.setTexture(textures[1]);
     logo_c.setPosition(200,500);

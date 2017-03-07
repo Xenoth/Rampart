@@ -3,8 +3,8 @@
 
 Audio::Audio()
 {
-    buffer1.loadFromFile("ressources/explosion.wav");
-    buffer2.loadFromFile("ressources/shoot.wav");
+    buffer1.loadFromFile("../ressources/explosion.wav");
+    buffer2.loadFromFile("../ressources/shoot.wav");
     explosion.setBuffer(buffer1);
     shoot.setBuffer(buffer2);
 
@@ -25,7 +25,7 @@ void Audio::resume()
 }
 
 void Audio::playMusic() {
-    music.openFromFile("ressources/skyrim.wav");
+    music.openFromFile("../ressources/skyrim.wav");
     music.setLoop(true);
     music.play();
 }

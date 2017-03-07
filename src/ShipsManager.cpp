@@ -5,7 +5,7 @@ using namespace std;
 
 ShipsManager::ShipsManager()
 {
-    texture.loadFromFile("ressources/texture_ship.png");
+    texture.loadFromFile("../ressources/texture_ship.png");
 }
 
 void ShipsManager::placeShip(sf::Vector2f pos)

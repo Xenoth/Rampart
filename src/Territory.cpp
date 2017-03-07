@@ -17,12 +17,12 @@ void Territory::loadTileMap(std::vector<uint8_t> tiles, sf::Vector2u mapSize)
         }
     }
 
-    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
+    tileMap.load("../ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
 void Territory::updateTileMap()
 {
-    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
+    tileMap.load("../ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
 void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castlePosition, bool isCastle)
@@ -45,7 +45,7 @@ void Territory::calculateTerritory(std::vector<Wall> walls, sf::Vector2u castleP
             calculateTerritory(walls, sf::Vector2u((uint)castlePosition.x, (uint)castlePosition.y-1), false);
         }
     }
-    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
+    tileMap.load("../ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
 void Territory::territorySideBySide(sf::Vector2u position)
@@ -109,7 +109,7 @@ bool Territory::isARealTerritory(std::vector<Castle> castles, std::vector<Wall> 
     }
 
     useBackUp();
-    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), backup_territory_map, sizeMap);
+    tileMap.load("../ressources/tileset_territory.png", sf::Vector2u(32, 32), backup_territory_map, sizeMap);
 
     //9? => if > 1 => game over
     for (int x = 0; x < sizeMap.x; ++x)
@@ -198,7 +198,7 @@ void Territory::calculateNoTerritory(std::vector<Wall> walls)
         }
     }
 
-    tileMap.load("ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
+    tileMap.load("../ressources/tileset_territory.png", sf::Vector2u(32, 32), territory_map, sizeMap);
 }
 
 int Territory::countCaseEmpty()

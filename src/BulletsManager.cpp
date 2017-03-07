@@ -2,7 +2,7 @@
 
 BulletsManager::BulletsManager()
 {
-	texture.loadFromFile("ressources/texture_bullet.png");
+	texture.loadFromFile("../ressources/texture_bullet.png");
 
 }
 

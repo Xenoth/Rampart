@@ -55,11 +55,11 @@ bool MapManager::generateMap(sf::Vector2u mapSize)
 	}
 	
 	
-	if(!map1.load("ressources/tileset1.png", sf::Vector2u(32, 32), tiles, mapSize))
+	if(!map1.load("../ressources/tileset1.png", sf::Vector2u(32, 32), tiles, mapSize))
 		return false;
-	if(!map2.load("ressources/tileset2.png", sf::Vector2u(32, 32), tiles, mapSize))
+	if(!map2.load("../ressources/tileset2.png", sf::Vector2u(32, 32), tiles, mapSize))
 		return false;
-	if(!map3.load("ressources/tileset3.png", sf::Vector2u(32, 32), tiles, mapSize))
+	if(!map3.load("../ressources/tileset3.png", sf::Vector2u(32, 32), tiles, mapSize))
 		return false;
 	return true;
 }

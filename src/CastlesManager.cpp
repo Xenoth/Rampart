@@ -2,7 +2,7 @@
 
 CastlesManager::CastlesManager() 
 {
-    texture.loadFromFile("ressources/texture_castle2.png");
+    texture.loadFromFile("../ressources/texture_castle2.png");
 }
 
 void CastlesManager::drawCastles(sf::RenderWindow & window)

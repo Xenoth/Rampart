@@ -2,7 +2,7 @@
 
 WallManager::WallManager() 
 {
-    texture.loadFromFile("ressources/texture_wall.png");
+    texture.loadFromFile("../ressources/texture_wall.png");
 }
 
 void WallManager::notifyExplosion(void *from, sf::Vector2f pos, bool faction) 

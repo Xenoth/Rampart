@@ -3,7 +3,7 @@
 
 GunsManager::GunsManager()
 {
-	texture.loadFromFile("ressources/texture_gun.png");
+	texture.loadFromFile("../ressources/texture_gun.png");
 }
 
 void GunsManager::placeGun(sf::Vector2f pos)
