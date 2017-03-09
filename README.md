@@ -3,6 +3,8 @@
 Rampart is a 2D Strategy game like the original 1990's game.
 It is powered by C++ and SFML and it is an University Project.
 
+This Branch contains the built version for Linux
+
 ## Uses
 * the multimedia API SFML2 http://www.sfml-dev.org/index-fr.php
 
@@ -11,24 +13,11 @@ It is powered by C++ and SFML and it is an University Project.
 * g++
 * SFML2
 
-## Build
-First create the build folder and move in :
-```shell
-mkdir build/ && cd build/
-```
-Then create the makefile :
-```shell
-cmake ..
-```
+## Run
 
-Now simply build with :
-```shell
-make
+Execute
 ```
-
-Execute :
-```shell
-./rampart
+cd bin && ./rampart
 ```
 
 ## Install
