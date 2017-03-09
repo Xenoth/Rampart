@@ -36,4 +36,4 @@ Actualy this only can be done manualy, but target install will surely come soon
 
 ## Authors
 * BAILLEUX Pol (Xenoth)
-* CRETIN Gaëtan
+* CRETIN Gaëtan (GCretin)
